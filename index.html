@@ -1,0 +1,2009 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Digital Village Administration</title>
+
+
+    <style>
+
+        /* =====================================================
+           RESET
+        ===================================================== */
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+
+        /* =====================================================
+           BODY
+        ===================================================== */
+
+        body {
+
+            font-family:
+                Arial,
+                Helvetica,
+                sans-serif;
+
+            min-height: 100vh;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #087f5b,
+                    #07543f
+                );
+
+            display: flex;
+
+            justify-content: center;
+
+            align-items: center;
+
+            padding: 30px;
+
+        }
+
+
+        /* =====================================================
+           MAIN CONTAINER
+        ===================================================== */
+
+        .login-container {
+
+            width: 100%;
+
+            max-width: 950px;
+
+            min-height: 580px;
+
+            display: grid;
+
+            grid-template-columns:
+                1fr 1fr;
+
+            background: white;
+
+            border-radius: 20px;
+
+            overflow: hidden;
+
+            box-shadow:
+                0 25px 60px
+                rgba(0, 0, 0, .25);
+
+        }
+
+
+        /* =====================================================
+           LEFT PANEL
+        ===================================================== */
+
+        .left-panel {
+
+            background:
+                linear-gradient(
+                    145deg,
+                    #0b8b63,
+                    #087c59
+                );
+
+            color: white;
+
+            padding:
+                60px 45px;
+
+            display: flex;
+
+            flex-direction: column;
+
+            justify-content: center;
+
+        }
+
+
+        /* =====================================================
+           HOUSE ICON
+        ===================================================== */
+
+        .house-icon {
+
+            font-size: 55px;
+
+            margin-bottom: 25px;
+
+        }
+
+
+        /* =====================================================
+           LEFT TITLE
+        ===================================================== */
+
+        .left-panel h1 {
+
+            font-size: 38px;
+
+            line-height: 1.15;
+
+            margin-bottom: 25px;
+
+        }
+
+
+        .left-panel h1 span {
+
+            color: #9ff5d2;
+
+        }
+
+
+        /* =====================================================
+           DESCRIPTION
+        ===================================================== */
+
+        .description {
+
+            font-size: 16px;
+
+            line-height: 1.8;
+
+            color: #e9fff7;
+
+            margin-bottom: 30px;
+
+        }
+
+
+        /* =====================================================
+           FEATURES
+        ===================================================== */
+
+        .features {
+
+            list-style: none;
+
+        }
+
+
+        .features li {
+
+            margin: 18px 0;
+
+            font-size: 16px;
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 12px;
+
+        }
+
+
+        /* =====================================================
+           CHECK ICON
+        ===================================================== */
+
+        .check {
+
+            width: 25px;
+
+            height: 25px;
+
+            background:
+                rgba(255, 255, 255, .18);
+
+            border-radius: 50%;
+
+            display: flex;
+
+            justify-content: center;
+
+            align-items: center;
+
+            font-weight: bold;
+
+        }
+
+
+        /* =====================================================
+           RIGHT PANEL
+        ===================================================== */
+
+        .right-panel {
+
+            padding:
+                45px;
+
+            display: flex;
+
+            flex-direction: column;
+
+            justify-content: center;
+
+        }
+
+
+        /* =====================================================
+           LOGIN HEADER
+        ===================================================== */
+
+        .right-panel h2 {
+
+            color: #164b3c;
+
+            font-size: 29px;
+
+            margin-bottom: 10px;
+
+        }
+
+
+        .subtitle {
+
+            color: #888;
+
+            margin-bottom: 25px;
+
+            font-size: 15px;
+
+        }
+
+
+        /* =====================================================
+           LOGIN TYPE BUTTONS
+        ===================================================== */
+
+        .login-types {
+
+            display: grid;
+
+            grid-template-columns:
+                1fr 1fr;
+
+            gap: 10px;
+
+            margin-bottom: 25px;
+
+        }
+
+
+        .login-type {
+
+            height: 45px;
+
+            border: 1px solid #cce5dc;
+
+            background: #f5fbf8;
+
+            color: #17664e;
+
+            border-radius: 8px;
+
+            font-size: 14px;
+
+            font-weight: bold;
+
+            cursor: pointer;
+
+            transition: .25s;
+
+        }
+
+
+        .login-type:hover {
+
+            background: #e7f7f0;
+
+        }
+
+
+        .login-type.active {
+
+            background: #0b8b63;
+
+            color: white;
+
+            border-color: #0b8b63;
+
+        }
+
+
+        /* =====================================================
+           FORM GROUP
+        ===================================================== */
+
+        .form-group {
+
+            margin-bottom: 20px;
+
+        }
+
+
+        .form-group label {
+
+            display: block;
+
+            font-weight: bold;
+
+            margin-bottom: 8px;
+
+            color: #222;
+
+        }
+
+
+        /* =====================================================
+           INPUT WRAPPER
+        ===================================================== */
+
+        .input-wrapper {
+
+            position: relative;
+
+        }
+
+
+        /* =====================================================
+           INPUT
+        ===================================================== */
+
+        .input-wrapper input {
+
+            width: 100%;
+
+            height: 48px;
+
+            padding:
+                0 45px 0 15px;
+
+            border:
+                1px solid #ccc;
+
+            border-radius: 8px;
+
+            font-size: 15px;
+
+            outline: none;
+
+            transition: .2s;
+
+        }
+
+
+        .input-wrapper input:focus {
+
+            border-color: #0b8b63;
+
+            box-shadow:
+                0 0 0 3px
+                rgba(11, 139, 99, .12);
+
+        }
+
+
+        /* =====================================================
+           INPUT ICON
+        ===================================================== */
+
+        .input-icon {
+
+            position: absolute;
+
+            right: 15px;
+
+            top: 50%;
+
+            transform:
+                translateY(-50%);
+
+            color: #777;
+
+            font-size: 19px;
+
+            cursor: pointer;
+
+            user-select: none;
+
+        }
+
+
+        /* =====================================================
+           LOGIN BUTTON
+        ===================================================== */
+
+        .login-btn {
+
+            width: 100%;
+
+            height: 48px;
+
+            border: none;
+
+            border-radius: 8px;
+
+            background: #0b8b63;
+
+            color: white;
+
+            font-size: 15px;
+
+            font-weight: bold;
+
+            cursor: pointer;
+
+            transition: .25s;
+
+            margin-top: 5px;
+
+        }
+
+
+        .login-btn:hover {
+
+            background: #076c4d;
+
+            transform:
+                translateY(-1px);
+
+        }
+
+
+        .login-btn:disabled {
+
+            background: #999;
+
+            cursor: not-allowed;
+
+            transform: none;
+
+        }
+
+
+        /* =====================================================
+           MESSAGE
+        ===================================================== */
+
+        #message {
+
+            display: none;
+
+            margin-top: 15px;
+
+            padding: 12px;
+
+            border-radius: 7px;
+
+            font-size: 14px;
+
+            text-align: center;
+
+        }
+
+
+        #message.error {
+
+            display: block;
+
+            background: #ffe8e8;
+
+            color: #c0392b;
+
+            border:
+                1px solid #f5b7b1;
+
+        }
+
+
+        #message.success {
+
+            display: block;
+
+            background: #e7f8ef;
+
+            color: #087f5b;
+
+            border:
+                1px solid #a9dfbf;
+
+        }
+
+
+        /* =====================================================
+           DEFAULT ADMIN CREDENTIALS
+        ===================================================== */
+
+        .credentials {
+
+            margin-top: 20px;
+
+            border:
+                1px solid #9bd6bd;
+
+            background: #f2fbf7;
+
+            border-radius: 10px;
+
+            padding: 18px;
+
+        }
+
+
+        .credentials-title {
+
+            color: #166b4e;
+
+            font-weight: bold;
+
+            margin-bottom: 10px;
+
+        }
+
+
+        .credentials p {
+
+            margin: 6px 0;
+
+            color: #555;
+
+            font-size: 14px;
+
+        }
+
+
+        .credentials strong {
+
+            color: #087f5b;
+
+        }
+
+
+        /* =====================================================
+           USER INFORMATION
+        ===================================================== */
+
+        .user-info {
+
+            display: none;
+
+            margin-top: 20px;
+
+            border:
+                1px solid #9bd6bd;
+
+            background: #f2fbf7;
+
+            border-radius: 10px;
+
+            padding: 15px;
+
+        }
+
+
+        .user-info-title {
+
+            color: #166b4e;
+
+            font-weight: bold;
+
+            margin-bottom: 8px;
+
+        }
+
+
+        .user-info p {
+
+            color: #666;
+
+            font-size: 13px;
+
+            line-height: 1.6;
+
+        }
+
+
+        /* =====================================================
+           SECURITY
+        ===================================================== */
+
+        .security {
+
+            text-align: center;
+
+            color: #888;
+
+            font-size: 13px;
+
+            margin-top: 25px;
+
+        }
+
+
+        /* =====================================================
+           LOADING
+        ===================================================== */
+
+        .loading {
+
+            display: inline-block;
+
+            width: 15px;
+
+            height: 15px;
+
+            border:
+                2px solid
+                rgba(255, 255, 255, .5);
+
+            border-top-color: white;
+
+            border-radius: 50%;
+
+            animation:
+                spin .7s linear infinite;
+
+            vertical-align: middle;
+
+            margin-right: 7px;
+
+        }
+
+
+        @keyframes spin {
+
+            to {
+
+                transform:
+                    rotate(360deg);
+
+            }
+
+        }
+
+
+        /* =====================================================
+           MOBILE
+        ===================================================== */
+
+        @media(max-width: 750px) {
+
+            body {
+
+                padding: 15px;
+
+            }
+
+
+            .login-container {
+
+                grid-template-columns:
+                    1fr;
+
+                max-width: 500px;
+
+            }
+
+
+            .left-panel {
+
+                padding:
+                    40px 30px;
+
+            }
+
+
+            .left-panel h1 {
+
+                font-size: 30px;
+
+            }
+
+
+            .right-panel {
+
+                padding:
+                    40px 30px;
+
+            }
+
+        }
+
+
+        @media(max-width: 450px) {
+
+            .left-panel {
+
+                padding:
+                    30px 22px;
+
+            }
+
+
+            .right-panel {
+
+                padding:
+                    30px 22px;
+
+            }
+
+
+            .left-panel h1 {
+
+                font-size: 27px;
+
+            }
+
+
+            .right-panel h2 {
+
+                font-size: 25px;
+
+            }
+
+
+            .login-types {
+
+                grid-template-columns:
+                    1fr;
+
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<!-- =====================================================
+     MAIN LOGIN CONTAINER
+===================================================== -->
+
+<div class="login-container">
+
+
+    <!-- =================================================
+         LEFT PANEL
+    ================================================== -->
+
+    <div class="left-panel">
+
+
+        <div class="house-icon">
+
+            🏡
+
+        </div>
+
+
+        <h1>
+
+            Digital Village
+
+            <br>
+
+            <span>
+                Administration
+            </span>
+
+        </h1>
+
+
+        <p class="description">
+
+            A simple digital platform for managing
+            village information, students, citizens
+            and administrative records.
+
+        </p>
+
+
+        <ul class="features">
+
+
+            <li>
+
+                <span class="check">
+                    ✓
+                </span>
+
+                Citizen Management
+
+            </li>
+
+
+            <li>
+
+                <span class="check">
+                    ✓
+                </span>
+
+                Student Records
+
+            </li>
+
+
+            <li>
+
+                <span class="check">
+                    ✓
+                </span>
+
+                Village Information
+
+            </li>
+
+
+            <li>
+
+                <span class="check">
+                    ✓
+                </span>
+
+                Reports & Administration
+
+            </li>
+
+
+        </ul>
+
+
+    </div>
+
+
+
+    <!-- =================================================
+         RIGHT PANEL
+    ================================================== -->
+
+    <div class="right-panel">
+
+
+        <h2 id="loginTitle">
+
+            Admin Login
+
+        </h2>
+
+
+        <p class="subtitle" id="loginSubtitle">
+
+            Login to access the administrator dashboard.
+
+        </p>
+
+
+
+        <!-- =================================================
+             LOGIN TYPE
+        ================================================== -->
+
+        <div class="login-types">
+
+
+            <button
+                type="button"
+                class="login-type active"
+                id="adminTypeBtn"
+                onclick="selectLoginType('admin')"
+            >
+
+                🛡️ Admin Login
+
+            </button>
+
+
+            <button
+                type="button"
+                class="login-type"
+                id="userTypeBtn"
+                onclick="selectLoginType('user')"
+            >
+
+                👤 User Login
+
+            </button>
+
+
+        </div>
+
+
+
+        <!-- =================================================
+             LOGIN FORM
+        ================================================== -->
+
+        <form id="loginForm">
+
+
+            <!-- =================================================
+                 ADMIN USERNAME
+            ================================================== -->
+
+            <div
+                class="form-group"
+                id="usernameGroup"
+            >
+
+                <label for="username">
+
+                    Username
+
+                </label>
+
+
+                <div class="input-wrapper">
+
+
+                    <input
+                        type="text"
+                        id="username"
+                        name="username"
+                        placeholder="Enter admin username"
+                        autocomplete="username"
+                    >
+
+
+                    <span class="input-icon">
+
+                        👤
+
+                    </span>
+
+
+                </div>
+
+            </div>
+
+
+
+            <!-- =================================================
+                 USER MOBILE
+            ================================================== -->
+
+            <div
+                class="form-group"
+                id="mobileGroup"
+                style="display:none;"
+            >
+
+                <label for="mobile">
+
+                    Mobile Number
+
+                </label>
+
+
+                <div class="input-wrapper">
+
+
+                    <input
+                        type="tel"
+                        id="mobile"
+                        name="mobile"
+                        placeholder="Enter any 10-digit mobile number"
+                        maxlength="10"
+                        autocomplete="tel"
+                    >
+
+
+                    <span class="input-icon">
+
+                        📱
+
+                    </span>
+
+
+                </div>
+
+            </div>
+
+
+
+            <!-- =================================================
+                 PASSWORD
+            ================================================== -->
+
+            <div class="form-group">
+
+
+                <label for="password">
+
+                    Password
+
+                </label>
+
+
+                <div class="input-wrapper">
+
+
+                    <input
+                        type="password"
+                        id="password"
+                        name="password"
+                        placeholder="Enter password"
+                        autocomplete="current-password"
+                        required
+                    >
+
+
+                    <span
+                        class="input-icon"
+                        id="togglePassword"
+                        onclick="togglePassword()"
+                    >
+
+                        👁
+
+                    </span>
+
+
+                </div>
+
+
+            </div>
+
+
+
+            <!-- =================================================
+                 LOGIN BUTTON
+            ================================================== -->
+
+            <button
+                type="submit"
+                class="login-btn"
+                id="loginBtn"
+            >
+
+                Login to Admin Dashboard →
+
+            </button>
+
+
+
+            <!-- =================================================
+                 MESSAGE
+            ================================================== -->
+
+            <div id="message"></div>
+
+
+        </form>
+
+
+
+        <!-- =================================================
+             USER INFORMATION
+        ================================================== -->
+
+        <div
+            class="user-info"
+            id="userInfo"
+        >
+
+
+            <div class="user-info-title">
+
+                👤 Citizen Login (Any 10-digit Mobile)
+
+            </div>
+
+
+            <p>
+
+                Enter <strong>any 10-digit mobile number</strong> to directly access your User Dashboard.
+
+            </p>
+
+            <div style="margin-top: 10px; font-size: 13px; color: #166b4e; background: #e7f7f0; padding: 10px 14px; border-radius: 8px; border: 1px solid #b7e4d2;">
+                <div>Mobile: <strong>8760114592</strong> (or any 10-digit number)</div>
+                <div>Password: <strong>user123</strong></div>
+            </div>
+
+        </div>
+
+
+
+        <!-- =================================================
+             SECURITY
+        ================================================== -->
+
+        <div class="security">
+
+            🔒 Secure Digital Village Portal
+
+        </div>
+
+
+    </div>
+
+
+</div>
+
+
+
+<script>
+
+
+/* =========================================================
+   CURRENT LOGIN TYPE
+========================================================= */
+
+let loginType = "admin";
+
+
+
+/* =========================================================
+   SELECT LOGIN TYPE
+========================================================= */
+
+function selectLoginType(type) {
+
+
+    loginType = type;
+
+
+    const adminButton =
+        document.getElementById(
+            "adminTypeBtn"
+        );
+
+
+    const userButton =
+        document.getElementById(
+            "userTypeBtn"
+        );
+
+
+    const usernameGroup =
+        document.getElementById(
+            "usernameGroup"
+        );
+
+
+    const mobileGroup =
+        document.getElementById(
+            "mobileGroup"
+        );
+
+
+    const adminCredentials =
+        document.getElementById(
+            "adminCredentials"
+        );
+
+
+    const userInfo =
+        document.getElementById(
+            "userInfo"
+        );
+
+
+    const loginTitle =
+        document.getElementById(
+            "loginTitle"
+        );
+
+
+    const loginSubtitle =
+        document.getElementById(
+            "loginSubtitle"
+        );
+
+
+    const loginBtn =
+        document.getElementById(
+            "loginBtn"
+        );
+
+
+    /* =====================================================
+       ADMIN LOGIN
+    ===================================================== */
+
+    if (type === "admin") {
+
+
+        adminButton.classList.add(
+            "active"
+        );
+
+
+        userButton.classList.remove(
+            "active"
+        );
+
+
+        usernameGroup.style.display =
+            "block";
+
+
+        mobileGroup.style.display =
+            "none";
+
+
+        adminCredentials.style.display =
+            "block";
+
+
+        userInfo.style.display =
+            "none";
+
+
+        loginTitle.textContent =
+            "Admin Login";
+
+
+        loginSubtitle.textContent =
+            "Login to access the administrator dashboard.";
+
+
+        loginBtn.textContent =
+            "Login to Admin Dashboard →";
+
+
+        document
+            .getElementById("username")
+            .required = true;
+
+        document
+            .getElementById("mobile")
+            .required = false;
+
+    }
+
+
+    /* =====================================================
+       USER LOGIN
+    ===================================================== */
+
+    else {
+
+
+        adminButton.classList.remove(
+            "active"
+        );
+
+
+        userButton.classList.add(
+            "active"
+        );
+
+
+        usernameGroup.style.display =
+            "none";
+
+
+        mobileGroup.style.display =
+            "block";
+
+
+        userInfo.style.display =
+            "block";
+
+
+        loginTitle.textContent =
+            "User Login";
+
+
+        loginSubtitle.textContent =
+            "Enter any 10-digit mobile number to access dashboard.";
+
+
+        loginBtn.textContent =
+            "Login to User Dashboard →";
+
+
+        document
+            .getElementById("username")
+            .required = false;
+
+
+        document
+            .getElementById("mobile")
+            .required = true;
+
+    }
+
+
+    /* Clear old message */
+
+    hideMessage();
+
+}
+
+
+
+/* =========================================================
+   LOGIN FORM
+========================================================= */
+
+document
+    .getElementById("loginForm")
+    .addEventListener(
+        "submit",
+        async function(event) {
+
+
+            event.preventDefault();
+
+
+            const password =
+                document
+                    .getElementById("password")
+                    .value;
+
+
+            const loginBtn =
+                document
+                    .getElementById("loginBtn");
+
+
+            /* =================================================
+               ADMIN LOGIN
+            ================================================= */
+
+            if (loginType === "admin") {
+
+
+                const username =
+                    document
+                        .getElementById("username")
+                        .value
+                        .trim();
+
+
+                /* Validation */
+
+                if (
+                    !username ||
+                    !password
+                ) {
+
+                    showMessage(
+                        "Please enter username and password.",
+                        "error"
+                    );
+
+                    return;
+
+                }
+
+
+                /* Loading */
+
+                loginBtn.disabled = true;
+
+
+                loginBtn.innerHTML = `
+
+                    <span class="loading"></span>
+
+                    Logging in...
+
+                `;
+
+
+                hideMessage();
+
+
+                try {
+
+
+                    const response =
+                        await fetch(
+                            "/login",
+                            {
+
+                                method:
+                                    "POST",
+
+                                headers: {
+
+                                    "Content-Type":
+                                        "application/json"
+
+                                },
+
+                                body:
+                                    JSON.stringify({
+
+                                        username:
+                                            username,
+
+                                        password:
+                                            password
+
+                                    })
+
+                            }
+                        );
+
+
+                    const data =
+                        await response.json();
+
+
+                    console.log(
+                        "Admin login response:",
+                        data
+                    );
+
+
+                    /* =================================================
+                       ADMIN LOGIN SUCCESS
+                    ================================================= */
+
+                    if (
+                        response.ok &&
+                        data.success
+                    ) {
+
+
+                        showMessage(
+                            "✅ Admin login successful! Opening dashboard...",
+                            "success"
+                        );
+
+
+                        /* Save admin session */
+
+                        sessionStorage.setItem(
+                            "isLoggedIn",
+                            "true"
+                        );
+
+                        sessionStorage.setItem(
+                            "adminLoggedIn",
+                            "true"
+                        );
+
+                        sessionStorage.setItem(
+                            "loginType",
+                            "admin"
+                        );
+
+                        sessionStorage.setItem(
+                            "adminUsername",
+                            data.user?.username ||
+                            username
+                        );
+
+                        sessionStorage.setItem(
+                            "adminName",
+                            data.user?.full_name ||
+                            "Village Administrator"
+                        );
+
+                        sessionStorage.setItem(
+                            "adminRole",
+                            data.user?.role ||
+                            "admin"
+                        );
+
+
+                        /* Redirect */
+
+                        setTimeout(
+                            function() {
+
+                                window.location.href =
+                                    "/dashboard";
+
+                            },
+                            700
+                        );
+
+
+                        return;
+
+                    }
+
+
+                    /* =================================================
+                       ADMIN LOGIN FAILED
+                    ================================================= */
+
+                    showMessage(
+
+                        data.message ||
+                        "Invalid admin username or password.",
+
+                        "error"
+
+                    );
+
+                }
+
+
+                catch(error) {
+
+
+                    console.error(
+                        "Admin login error:",
+                        error
+                    );
+
+
+                    showMessage(
+
+                        "❌ Cannot connect to server. " +
+                        "Make sure Node.js server is running.",
+
+                        "error"
+
+                    );
+
+                }
+
+
+                /* Reset */
+
+                loginBtn.disabled = false;
+
+                loginBtn.textContent =
+                    "Login to Admin Dashboard →";
+
+            }
+
+
+
+            /* =================================================
+               USER LOGIN
+            ================================================= */
+
+            else {
+
+
+                const mobile =
+                    document
+                        .getElementById("mobile")
+                        .value
+                        .trim();
+
+
+                /* Validation */
+
+                if (
+                    !mobile ||
+                    !password
+                ) {
+
+                    showMessage(
+                        "Please enter mobile number and password.",
+                        "error"
+                    );
+
+                    return;
+
+                }
+
+
+                /* Mobile validation */
+
+                if (
+                    !/^[0-9]{10}$/.test(
+                        mobile
+                    )
+                ) {
+
+                    showMessage(
+                        "Please enter a valid 10-digit mobile number.",
+                        "error"
+                    );
+
+                    return;
+
+                }
+
+
+                /* Loading */
+
+                loginBtn.disabled = true;
+
+
+                loginBtn.innerHTML = `
+
+                    <span class="loading"></span>
+
+                    Logging in...
+
+                `;
+
+
+                hideMessage();
+
+
+                try {
+
+
+                    const response =
+                        await fetch(
+                            "/user-login",
+                            {
+
+                                method:
+                                    "POST",
+
+                                headers: {
+
+                                    "Content-Type":
+                                        "application/json"
+
+                                },
+
+                                body:
+                                    JSON.stringify({
+
+                                        mobile:
+                                            mobile,
+
+                                        password:
+                                            password
+
+                                    })
+
+                            }
+                        );
+
+
+                    const data =
+                        await response.json();
+
+
+                    console.log(
+                        "User login response:",
+                        data
+                    );
+
+
+                    /* =================================================
+                       USER LOGIN SUCCESS
+                    ================================================= */
+
+                    if (
+                        response.ok &&
+                        data.success
+                    ) {
+
+
+                        showMessage(
+                            "✅ User login successful! Opening dashboard...",
+                            "success"
+                        );
+
+
+                        /* Save user session */
+
+                        sessionStorage.setItem(
+                            "isLoggedIn",
+                            "true"
+                        );
+
+                        sessionStorage.setItem(
+                            "userLoggedIn",
+                            "true"
+                        );
+
+                        sessionStorage.setItem(
+                            "loginType",
+                            "user"
+                        );
+
+
+                        sessionStorage.setItem(
+                            "userId",
+                            data.user?.id ||
+                            ""
+                        );
+
+
+                        sessionStorage.setItem(
+                            "userMobile",
+                            data.user?.mobile ||
+                            mobile
+                        );
+
+
+                        sessionStorage.setItem(
+                            "userName",
+                            data.user?.name ||
+                            data.user?.full_name ||
+                            ""
+                        );
+
+
+                        sessionStorage.setItem(
+                            "userRole",
+                            data.user?.role ||
+                            "user"
+                        );
+
+
+                        /* Redirect */
+
+                        setTimeout(
+                            function() {
+
+                                window.location.href =
+                                    "/user-dashboard";
+
+                            },
+                            700
+                        );
+
+
+                        return;
+
+                    }
+
+
+                    /* =================================================
+                       USER LOGIN FAILED
+                    ================================================= */
+
+                    showMessage(
+
+                        data.message ||
+                        "Invalid mobile number or password.",
+
+                        "error"
+
+                    );
+
+                }
+
+
+                catch(error) {
+
+
+                    console.error(
+                        "User login error:",
+                        error
+                    );
+
+
+                    showMessage(
+
+                        "❌ Cannot connect to server. " +
+                        "Make sure Node.js server is running.",
+
+                        "error"
+
+                    );
+
+                }
+
+
+                /* Reset */
+
+                loginBtn.disabled = false;
+
+                loginBtn.textContent =
+                    "Login to User Dashboard →";
+
+            }
+
+
+        }
+    );
+
+
+
+/* =========================================================
+   PASSWORD SHOW / HIDE
+========================================================= */
+
+function togglePassword() {
+
+
+    const password =
+        document.getElementById(
+            "password"
+        );
+
+
+    const icon =
+        document.getElementById(
+            "togglePassword"
+        );
+
+
+    if (
+        password.type ===
+        "password"
+    ) {
+
+
+        password.type =
+            "text";
+
+
+        icon.textContent =
+            "🙈";
+
+    }
+
+
+    else {
+
+
+        /* IMPORTANT:
+           Correct value is "password"
+           NOT "admin123"
+        */
+
+        password.type =
+            "password";
+
+
+        icon.textContent =
+            "👁";
+
+    }
+
+}
+
+
+
+/* =========================================================
+   SHOW MESSAGE
+========================================================= */
+
+function showMessage(
+    text,
+    type
+) {
+
+
+    const message =
+        document.getElementById(
+            "message"
+        );
+
+
+    message.textContent =
+        text;
+
+
+    message.className =
+        type;
+
+
+    message.style.display =
+        "block";
+
+}
+
+
+
+/* =========================================================
+   HIDE MESSAGE
+========================================================= */
+
+function hideMessage() {
+
+
+    const message =
+        document.getElementById(
+            "message"
+        );
+
+
+    message.style.display =
+        "none";
+
+
+    message.textContent =
+        "";
+
+
+    message.className =
+        "";
+
+}
+
+
+
+/* =========================================================
+   MOBILE NUMBER - ONLY NUMBERS
+========================================================= */
+
+document
+    .getElementById("mobile")
+    .addEventListener(
+        "input",
+        function() {
+
+
+            this.value =
+                this.value
+                    .replace(
+                        /[^0-9]/g,
+                        ""
+                    )
+                    .slice(
+                        0,
+                        10
+                    );
+
+        }
+    );
+
+
+
+/* =========================================================
+   CHECK EXISTING LOGIN
+========================================================= */
+
+window.addEventListener(
+    "load",
+    function() {
+
+
+        const loggedIn =
+            sessionStorage.getItem(
+                "isLoggedIn"
+            );
+
+
+        const type =
+            sessionStorage.getItem(
+                "loginType"
+            );
+
+
+        /* If already logged in */
+
+        if (
+            loggedIn === "true"
+        ) {
+
+
+            if (
+                type === "admin"
+            ) {
+
+                console.log(
+                    "Admin session already exists."
+                );
+
+            }
+
+
+            else if (
+                type === "user"
+            ) {
+
+                console.log(
+                    "User session already exists."
+                );
+
+            }
+
+        }
+
+    }
+);
+
+</script>
+
+
+</body>
+
+</html>

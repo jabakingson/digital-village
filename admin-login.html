@@ -1,0 +1,881 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Admin Login | Digital Village</title>
+
+
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+
+        body {
+
+            font-family:
+                Arial,
+                Helvetica,
+                sans-serif;
+
+            min-height: 100vh;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #087f5b,
+                    #07543f
+                );
+
+            display: flex;
+
+            justify-content: center;
+
+            align-items: center;
+
+            padding: 25px;
+
+        }
+
+
+        .container {
+
+            width: 100%;
+
+            max-width: 900px;
+
+            min-height: 560px;
+
+            background: white;
+
+            border-radius: 20px;
+
+            overflow: hidden;
+
+            display: grid;
+
+            grid-template-columns: 1fr 1fr;
+
+            box-shadow:
+                0 25px 60px
+                rgba(0,0,0,.25);
+
+        }
+
+
+        /* =========================================
+           LEFT
+        ========================================= */
+
+        .left {
+
+            background:
+                linear-gradient(
+                    145deg,
+                    #0b8b63,
+                    #087c59
+                );
+
+            color: white;
+
+            padding: 55px 45px;
+
+            display: flex;
+
+            flex-direction: column;
+
+            justify-content: center;
+
+        }
+
+
+        .icon {
+
+            font-size: 55px;
+
+            margin-bottom: 20px;
+
+        }
+
+
+        .left h1 {
+
+            font-size: 38px;
+
+            line-height: 1.15;
+
+            margin-bottom: 20px;
+
+        }
+
+
+        .left h1 span {
+
+            color: #9ff5d2;
+
+        }
+
+
+        .left p {
+
+            line-height: 1.8;
+
+            color: #eafff7;
+
+            margin-bottom: 30px;
+
+        }
+
+
+        .features {
+
+            list-style: none;
+
+        }
+
+
+        .features li {
+
+            margin: 17px 0;
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 12px;
+
+        }
+
+
+        .check {
+
+            width: 26px;
+
+            height: 26px;
+
+            border-radius: 50%;
+
+            background:
+                rgba(255,255,255,.18);
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+        }
+
+
+        /* =========================================
+           RIGHT
+        ========================================= */
+
+        .right {
+
+            padding: 55px 45px;
+
+            display: flex;
+
+            flex-direction: column;
+
+            justify-content: center;
+
+        }
+
+
+        .right h2 {
+
+            color: #164b3c;
+
+            font-size: 30px;
+
+            margin-bottom: 8px;
+
+        }
+
+
+        .subtitle {
+
+            color: #888;
+
+            font-size: 15px;
+
+            margin-bottom: 30px;
+
+        }
+
+
+        .form-group {
+
+            margin-bottom: 20px;
+
+        }
+
+
+        label {
+
+            display: block;
+
+            font-weight: bold;
+
+            margin-bottom: 8px;
+
+            color: #222;
+
+        }
+
+
+        .input-box {
+
+            position: relative;
+
+        }
+
+
+        input {
+
+            width: 100%;
+
+            height: 50px;
+
+            border: 1px solid #ccc;
+
+            border-radius: 8px;
+
+            padding:
+                0 45px 0 15px;
+
+            font-size: 15px;
+
+            outline: none;
+
+        }
+
+
+        input:focus {
+
+            border-color: #0b8b63;
+
+            box-shadow:
+                0 0 0 3px
+                rgba(11,139,99,.12);
+
+        }
+
+
+        .input-icon {
+
+            position: absolute;
+
+            right: 15px;
+
+            top: 50%;
+
+            transform:
+                translateY(-50%);
+
+            cursor: pointer;
+
+        }
+
+
+        button {
+
+            width: 100%;
+
+            height: 50px;
+
+            border: none;
+
+            border-radius: 8px;
+
+            background: #0b8b63;
+
+            color: white;
+
+            font-size: 15px;
+
+            font-weight: bold;
+
+            cursor: pointer;
+
+        }
+
+
+        button:hover {
+
+            background: #076c4d;
+
+        }
+
+
+        button:disabled {
+
+            background: #999;
+
+            cursor: not-allowed;
+
+        }
+
+
+        #message {
+
+            margin-top: 15px;
+
+            padding: 12px;
+
+            border-radius: 8px;
+
+            display: none;
+
+            text-align: center;
+
+            font-size: 14px;
+
+        }
+
+
+        .success {
+
+            display: block !important;
+
+            background: #e7f8ef;
+
+            color: #087f5b;
+
+            border: 1px solid #a9dfbf;
+
+        }
+
+
+        .error {
+
+            display: block !important;
+
+            background: #ffe8e8;
+
+            color: #c0392b;
+
+            border: 1px solid #f5b7b1;
+
+        }
+
+
+        .credentials {
+
+            margin-top: 25px;
+
+            padding: 18px;
+
+            border-radius: 10px;
+
+            border: 1px solid #9bd6bd;
+
+            background: #f2fbf7;
+
+        }
+
+
+        .credentials-title {
+
+            color: #166b4e;
+
+            font-weight: bold;
+
+            margin-bottom: 10px;
+
+        }
+
+
+        .credentials p {
+
+            margin: 6px 0;
+
+            color: #555;
+
+            font-size: 14px;
+
+        }
+
+
+        .credentials strong {
+
+            color: #087f5b;
+
+        }
+
+
+        .security {
+
+            text-align: center;
+
+            color: #888;
+
+            margin-top: 25px;
+
+            font-size: 13px;
+
+        }
+
+
+        @media(max-width:750px) {
+
+            .container {
+
+                grid-template-columns: 1fr;
+
+            }
+
+            .left {
+
+                padding: 40px 30px;
+
+            }
+
+            .right {
+
+                padding: 40px 30px;
+
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<div class="container">
+
+
+    <!-- LEFT -->
+
+    <div class="left">
+
+        <div class="icon">
+            🛡️
+        </div>
+
+
+        <h1>
+
+            Digital Village
+
+            <br>
+
+            <span>
+                Administration
+            </span>
+
+        </h1>
+
+
+        <p>
+
+            Secure administrator portal for
+            managing village records, citizens,
+            complaints, schemes and certificates.
+
+        </p>
+
+
+        <ul class="features">
+
+            <li>
+
+                <span class="check">✓</span>
+
+                Manage Citizen Records
+
+            </li>
+
+
+            <li>
+
+                <span class="check">✓</span>
+
+                Manage Village Records
+
+            </li>
+
+
+            <li>
+
+                <span class="check">✓</span>
+
+                Insert & Update Data
+
+            </li>
+
+
+            <li>
+
+                <span class="check">✓</span>
+
+                Administration Reports
+
+            </li>
+
+        </ul>
+
+    </div>
+
+
+    <!-- RIGHT -->
+
+    <div class="right">
+
+        <h2>
+            Admin Login
+        </h2>
+
+
+        <p class="subtitle">
+
+            Login to access the administration dashboard.
+
+        </p>
+
+
+        <form id="adminLoginForm">
+
+
+            <div class="form-group">
+
+                <label>
+                    Username
+                </label>
+
+
+                <div class="input-box">
+
+                    <input
+                        type="text"
+                        id="username"
+                        placeholder="Enter admin username"
+                        autocomplete="username"
+                        required
+                    >
+
+                    <span class="input-icon">
+                        👤
+                    </span>
+
+                </div>
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label>
+                    Password
+                </label>
+
+
+                <div class="input-box">
+
+                    <input
+                        type="password"
+                        id="password"
+                        placeholder="Enter admin password"
+                        autocomplete="current-password"
+                        required
+                    >
+
+                    <span
+                        class="input-icon"
+                        id="togglePassword"
+                    >
+                        👁️
+                    </span>
+
+                </div>
+
+            </div>
+
+
+            <button
+                type="submit"
+                id="loginButton"
+            >
+
+                Login to Admin Dashboard →
+
+            </button>
+
+
+            <div id="message"></div>
+
+
+        </form>
+
+
+        <div class="security">
+
+            🔒 Secure Administrator Portal
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<script>
+
+const form =
+    document.getElementById(
+        "adminLoginForm"
+    );
+
+
+const username =
+    document.getElementById(
+        "username"
+    );
+
+
+const password =
+    document.getElementById(
+        "password"
+    );
+
+
+const button =
+    document.getElementById(
+        "loginButton"
+    );
+
+
+const message =
+    document.getElementById(
+        "message"
+    );
+
+
+/* =========================================
+   PASSWORD SHOW / HIDE
+========================================= */
+
+document
+    .getElementById("togglePassword")
+    .addEventListener(
+        "click",
+        function() {
+
+            if (
+                password.type === "password"
+            ) {
+
+                password.type = "text";
+
+                this.textContent = "🙈";
+
+            }
+
+            else {
+
+                password.type = "password";
+
+                this.textContent = "👁️";
+
+            }
+
+        }
+    );
+
+
+/* =========================================
+   LOGIN
+========================================= */
+
+form.addEventListener(
+    "submit",
+    async function(event) {
+
+        event.preventDefault();
+
+
+        const user =
+            username.value.trim();
+
+
+        const pass =
+            password.value;
+
+
+        if (!user || !pass) {
+
+            showMessage(
+                "Please enter username and password.",
+                "error"
+            );
+
+            return;
+
+        }
+
+
+        button.disabled = true;
+
+        button.textContent =
+            "Logging in...";
+
+
+        hideMessage();
+
+
+        try {
+
+            const response =
+                await fetch(
+                    "/login",
+                    {
+
+                        method: "POST",
+
+                        headers: {
+                            "Content-Type":
+                                "application/json"
+                        },
+
+                        body:
+                            JSON.stringify({
+
+                                username:
+                                    user,
+
+                                password:
+                                    pass
+
+                            })
+
+                    }
+                );
+
+
+            const data =
+                await response.json();
+
+
+            if (
+                response.ok &&
+                data.success
+            ) {
+
+                sessionStorage.setItem(
+                    "adminLoggedIn",
+                    "true"
+                );
+
+
+                sessionStorage.setItem(
+                    "adminUsername",
+                    data.user?.username ||
+                    user
+                );
+
+
+                sessionStorage.setItem(
+                    "adminRole",
+                    data.user?.role ||
+                    "admin"
+                );
+
+
+                showMessage(
+                    "✅ Admin login successful. Opening dashboard...",
+                    "success"
+                );
+
+
+                setTimeout(
+                    () => {
+
+                        window.location.href =
+                            "/dashboard";
+
+                    },
+                    700
+                );
+
+
+                return;
+
+            }
+
+
+            showMessage(
+                data.message ||
+                "Invalid username or password.",
+                "error"
+            );
+
+        }
+
+        catch(error) {
+
+            console.error(error);
+
+
+            showMessage(
+                "❌ Cannot connect to server.",
+                "error"
+            );
+
+        }
+
+
+        button.disabled = false;
+
+        button.textContent =
+            "Login to Admin Dashboard →";
+
+    }
+);
+
+
+function showMessage(
+    text,
+    type
+) {
+
+    message.textContent =
+        text;
+
+    message.className =
+        type;
+
+}
+
+
+function hideMessage() {
+
+    message.textContent = "";
+
+    message.className = "";
+
+}
+
+</script>
+
+
+</body>
+
+</html>

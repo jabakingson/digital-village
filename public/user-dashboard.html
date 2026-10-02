@@ -1,0 +1,2817 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+>
+
+<title>User Dashboard | Digital Village</title>
+
+
+<style>
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+body {
+
+    font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
+
+    background: #f2f5fb;
+
+    color: #26364d;
+
+}
+
+
+/* =====================================================
+   HEADER
+===================================================== */
+
+.header {
+
+    height: 72px;
+
+    background:
+        #304761;
+
+    color: white;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    padding: 0 35px;
+
+    box-shadow:
+        0 3px 12px
+        rgba(0,0,0,.15);
+
+}
+
+
+.logo {
+
+    font-size: 24px;
+
+    font-weight: bold;
+
+}
+
+
+.logo span {
+
+    margin-right: 10px;
+
+}
+
+
+.header-right {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 15px;
+
+}
+
+
+.user-badge {
+
+    font-size: 14px;
+
+    background: rgba(255, 255, 255, 0.15);
+
+    padding: 6px 14px;
+
+    border-radius: 20px;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 6px;
+
+}
+
+
+.logout {
+
+    border: none;
+
+    background: #ef4b3f;
+
+    color: white;
+
+    padding:
+        11px 22px;
+
+    border-radius: 7px;
+
+    cursor: pointer;
+
+    font-weight: bold;
+
+}
+
+
+.logout:hover {
+
+    background: #d93c31;
+
+}
+
+
+/* =====================================================
+   MAIN
+===================================================== */
+
+.container {
+
+    padding: 30px 55px;
+
+}
+
+
+/* =====================================================
+   TITLE & LIVE BADGE
+===================================================== */
+
+.page-title-row {
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    flex-wrap: wrap;
+
+    gap: 15px;
+
+    margin-bottom: 25px;
+
+}
+
+
+.page-title h1 {
+
+    font-size: 28px;
+
+    margin-bottom: 6px;
+
+}
+
+
+.page-title p {
+
+    color: #777;
+
+}
+
+
+.live-db-badge {
+
+    background: #e7f8ef;
+
+    color: #087f5b;
+
+    border: 1px solid #a9dfbf;
+
+    padding: 7px 15px;
+
+    border-radius: 20px;
+
+    font-size: 13px;
+
+    font-weight: bold;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 7px;
+
+}
+
+
+.pulse-dot {
+
+    width: 9px;
+
+    height: 9px;
+
+    background: #087f5b;
+
+    border-radius: 50%;
+
+    animation: pulse 1.5s infinite;
+
+}
+
+
+@keyframes pulse {
+
+    0% { transform: scale(0.9); opacity: 0.8; }
+
+    50% { transform: scale(1.4); opacity: 1; }
+
+    100% { transform: scale(0.9); opacity: 0.8; }
+
+}
+
+
+/* =====================================================
+   STATISTICS (LIVE DATABASE COUNTS)
+===================================================== */
+
+.stats {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(4, 1fr);
+
+    gap: 20px;
+
+    margin-bottom: 30px;
+
+}
+
+
+.stat {
+
+    background: white;
+
+    border-radius: 12px;
+
+    padding: 22px;
+
+    box-shadow:
+        0 5px 18px
+        rgba(0,0,0,.08);
+
+    position: relative;
+
+}
+
+
+.stat-icon {
+
+    font-size: 30px;
+
+    margin-bottom: 10px;
+
+}
+
+
+.stat h3 {
+
+    font-size: 28px;
+
+    margin-bottom: 5px;
+
+}
+
+
+.stat p {
+
+    color: #888;
+
+    font-size: 14px;
+
+}
+
+
+.stat-live-tag {
+
+    position: absolute;
+
+    top: 15px;
+
+    right: 15px;
+
+    font-size: 11px;
+
+    background: #f0f7f4;
+
+    color: #0b8b63;
+
+    padding: 2px 7px;
+
+    border-radius: 6px;
+
+    font-weight: bold;
+
+}
+
+
+/* =====================================================
+   PAYMENT & AI GRID (2 COLUMNS)
+===================================================== */
+
+.dashboard-features-grid {
+
+    display: grid;
+
+    grid-template-columns: 1.25fr 0.75fr;
+
+    gap: 25px;
+
+    margin-bottom: 30px;
+
+}
+
+
+/* =====================================================
+   GEMINI AI BOT CHAT SECTION
+===================================================== */
+
+.ai-assistant-card {
+
+    background: white;
+
+    border-radius: 14px;
+
+    box-shadow:
+        0 5px 22px
+        rgba(0,0,0,.09);
+
+    overflow: hidden;
+
+    border: 1px solid #dbe7f3;
+
+    display: flex;
+
+    flex-direction: column;
+
+}
+
+
+.ai-header {
+
+    background:
+        linear-gradient(
+            135deg,
+            #0b8b63,
+            #07543f
+        );
+
+    color: white;
+
+    padding: 18px 22px;
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    flex-wrap: wrap;
+
+    gap: 10px;
+
+}
+
+
+.ai-header-left {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 12px;
+
+}
+
+
+.ai-icon-pulse {
+
+    font-size: 24px;
+
+    background: rgba(255,255,255,.2);
+
+    width: 42px;
+
+    height: 42px;
+
+    border-radius: 50%;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+}
+
+
+.ai-title-wrap h2 {
+
+    font-size: 18px;
+
+    font-weight: bold;
+
+    margin-bottom: 2px;
+
+}
+
+
+.ai-title-wrap p {
+
+    font-size: 12.5px;
+
+    color: #d4f8e8;
+
+}
+
+
+.ai-badge {
+
+    background: rgba(255, 255, 255, 0.2);
+
+    padding: 4px 10px;
+
+    border-radius: 12px;
+
+    font-size: 12px;
+
+    font-weight: bold;
+
+}
+
+
+.ai-suggestions {
+
+    padding: 12px 18px;
+
+    background: #f8fbfa;
+
+    border-bottom: 1px solid #e7efec;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 8px;
+
+    overflow-x: auto;
+
+    white-space: nowrap;
+
+}
+
+
+.ai-suggestions-label {
+
+    font-size: 12px;
+
+    font-weight: bold;
+
+    color: #0b8b63;
+
+    flex-shrink: 0;
+
+}
+
+
+.suggestion-chip {
+
+    background: white;
+
+    border: 1px solid #bce1d3;
+
+    color: #166b4e;
+
+    padding: 5px 12px;
+
+    border-radius: 20px;
+
+    font-size: 12px;
+
+    cursor: pointer;
+
+    transition: 0.2s;
+
+    flex-shrink: 0;
+
+}
+
+
+.suggestion-chip:hover {
+
+    background: #0b8b63;
+
+    color: white;
+
+    border-color: #0b8b63;
+
+}
+
+
+.ai-chat-body {
+
+    height: 310px;
+
+    overflow-y: auto;
+
+    padding: 18px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 14px;
+
+    background: #fafbfd;
+
+}
+
+
+.ai-message {
+
+    display: flex;
+
+    gap: 10px;
+
+    max-width: 88%;
+
+    align-items: flex-start;
+
+}
+
+
+.ai-message.user {
+
+    align-self: flex-end;
+
+    flex-direction: row-reverse;
+
+}
+
+
+.ai-message.bot {
+
+    align-self: flex-start;
+
+}
+
+
+.message-avatar {
+
+    width: 34px;
+
+    height: 34px;
+
+    border-radius: 50%;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    font-size: 17px;
+
+    flex-shrink: 0;
+
+}
+
+
+.user .message-avatar {
+
+    background: #087f5b;
+
+    color: white;
+
+}
+
+
+.bot .message-avatar {
+
+    background: #298bd1;
+
+    color: white;
+
+}
+
+
+.message-content {
+
+    padding: 11px 15px;
+
+    border-radius: 12px;
+
+    font-size: 13.5px;
+
+    line-height: 1.55;
+
+}
+
+
+.user .message-content {
+
+    background: #0b8b63;
+
+    color: white;
+
+    border-bottom-right-radius: 2px;
+
+}
+
+
+.bot .message-content {
+
+    background: white;
+
+    color: #222;
+
+    border: 1px solid #e1e9f0;
+
+    border-bottom-left-radius: 2px;
+
+    box-shadow: 0 2px 6px rgba(0,0,0,.04);
+
+}
+
+
+.bot .message-content p {
+
+    margin-bottom: 6px;
+
+}
+
+
+.bot .message-content p:last-child {
+
+    margin-bottom: 0;
+
+}
+
+
+.bot .message-content ul,
+
+.bot .message-content ol {
+
+    margin-left: 18px;
+
+    margin-top: 4px;
+
+    margin-bottom: 6px;
+
+}
+
+
+.bot .message-content li {
+
+    margin-bottom: 3px;
+
+}
+
+
+.bot .message-content strong {
+
+    color: #164b3c;
+
+}
+
+
+.ai-typing {
+
+    display: none;
+
+    align-self: flex-start;
+
+    gap: 8px;
+
+    align-items: center;
+
+    background: white;
+
+    padding: 8px 14px;
+
+    border-radius: 12px;
+
+    border: 1px solid #e1e9f0;
+
+    font-size: 12.5px;
+
+    color: #666;
+
+}
+
+
+.typing-dots {
+
+    display: inline-flex;
+
+    gap: 4px;
+
+}
+
+
+.typing-dot {
+
+    width: 6px;
+
+    height: 6px;
+
+    background: #0b8b63;
+
+    border-radius: 50%;
+
+    animation: typingPulse 1.2s infinite ease-in-out;
+
+}
+
+
+.typing-dot:nth-child(2) { animation-delay: 0.2s; }
+
+.typing-dot:nth-child(3) { animation-delay: 0.4s; }
+
+
+@keyframes typingPulse {
+
+    0%, 80%, 100% { transform: scale(0.6); opacity: 0.4; }
+
+    40% { transform: scale(1); opacity: 1; }
+
+}
+
+
+.ai-input-bar {
+
+    padding: 14px 18px;
+
+    background: white;
+
+    border-top: 1px solid #e7efec;
+
+    display: flex;
+
+    gap: 10px;
+
+    align-items: center;
+
+}
+
+
+.ai-input-bar input {
+
+    flex: 1;
+
+    height: 46px;
+
+    border: 1px solid #ccc;
+
+    border-radius: 8px;
+
+    padding: 0 15px;
+
+    font-size: 14px;
+
+    outline: none;
+
+    transition: 0.2s;
+
+}
+
+
+.ai-input-bar input:focus {
+
+    border-color: #0b8b63;
+
+    box-shadow: 0 0 0 3px rgba(11, 139, 99, 0.12);
+
+}
+
+
+.ai-send-btn {
+
+    background: #0b8b63;
+
+    color: white;
+
+    border: none;
+
+    border-radius: 8px;
+
+    padding: 0 20px;
+
+    height: 46px;
+
+    font-size: 14px;
+
+    font-weight: bold;
+
+    cursor: pointer;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 6px;
+
+    transition: 0.2s;
+
+}
+
+
+.ai-send-btn:hover {
+
+    background: #076c4d;
+
+}
+
+
+.ai-send-btn:disabled {
+
+    background: #999;
+
+    cursor: not-allowed;
+
+}
+
+
+.ai-clear-btn {
+
+    background: #f1f4f8;
+
+    color: #555;
+
+    border: 1px solid #d5dee6;
+
+    border-radius: 8px;
+
+    padding: 0 12px;
+
+    height: 46px;
+
+    font-size: 13px;
+
+    cursor: pointer;
+
+}
+
+
+.ai-clear-btn:hover {
+
+    background: #e4e9f0;
+
+}
+
+
+/* =====================================================
+   RAZORPAY PAYMENT CARD
+===================================================== */
+
+.payment-card {
+    background: white;
+    border-radius: 14px;
+    box-shadow: 0 5px 22px rgba(0,0,0,.09);
+    border: 1px solid #dbe7f3;
+    padding: 22px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.payment-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 14px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid #eef3f0;
+}
+
+.payment-icon {
+    width: 44px;
+    height: 44px;
+    background: linear-gradient(135deg, #e7f7f0, #d0f0e3);
+    color: #0b8b63;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 22px;
+    flex-shrink: 0;
+}
+
+.payment-title {
+    flex-grow: 1;
+}
+
+.payment-title h3 {
+    font-size: 17px;
+    color: #164b3c;
+    margin-bottom: 2px;
+}
+
+.payment-title p {
+    font-size: 12px;
+    color: #667;
+}
+
+.rzp-pill {
+    background: #02042b;
+    color: #528ff0;
+    padding: 3px 8px;
+    border-radius: 12px;
+    font-size: 10.5px;
+    font-weight: bold;
+    letter-spacing: 0.3px;
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.payment-details-box {
+    background: #f8fbfa;
+    border: 1px solid #cce8dc;
+    border-radius: 10px;
+    padding: 14px;
+    margin-bottom: 14px;
+}
+
+.payment-form-group {
+    display: flex;
+    flex-direction: column;
+}
+
+.payment-input-select {
+    width: 100%;
+    padding: 9px 12px;
+    border: 1.5px solid #b2d8cb;
+    border-radius: 7px;
+    font-size: 13px;
+    color: #194436;
+    background: white;
+    font-weight: 500;
+    outline: none;
+    transition: 0.2s;
+}
+
+.payment-input-select:focus {
+    border-color: #0b8b63;
+    box-shadow: 0 0 0 3px rgba(11, 139, 99, 0.15);
+}
+
+.quick-amounts {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 6px;
+}
+
+.amount-btn {
+    padding: 8px 4px;
+    background: white;
+    border: 1px solid #ccdcd5;
+    border-radius: 6px;
+    font-size: 12.5px;
+    font-weight: bold;
+    color: #245242;
+    cursor: pointer;
+    transition: 0.18s;
+}
+
+.amount-btn:hover {
+    background: #e7f8ef;
+    border-color: #0b8b63;
+    color: #0b8b63;
+}
+
+.amount-btn.active {
+    background: #0b8b63;
+    border-color: #0b8b63;
+    color: white;
+    box-shadow: 0 2px 6px rgba(11, 139, 99, 0.3);
+}
+
+.custom-amount-wrap {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.currency-symbol {
+    position: absolute;
+    left: 12px;
+    font-size: 14px;
+    font-weight: bold;
+    color: #0b8b63;
+}
+
+.custom-amount-wrap input {
+    width: 100%;
+    padding: 9px 12px 9px 28px;
+    border: 1.5px solid #b2d8cb;
+    border-radius: 7px;
+    font-size: 14px;
+    font-weight: bold;
+    color: #0b8b63;
+    background: white;
+    outline: none;
+    transition: 0.2s;
+}
+
+.custom-amount-wrap input:focus {
+    border-color: #0b8b63;
+    box-shadow: 0 0 0 3px rgba(11, 139, 99, 0.15);
+}
+
+.payment-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 6px;
+    font-size: 12.5px;
+    color: #555;
+}
+
+.payment-row:last-child {
+    margin-bottom: 0;
+}
+
+.payment-row strong {
+    color: #1a4d3e;
+    font-size: 13px;
+}
+
+.rzp-methods-bar {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-bottom: 12px;
+    justify-content: center;
+}
+
+.rzp-method-tag {
+    background: #eef6f3;
+    border: 1px solid #d0e7dc;
+    border-radius: 6px;
+    font-size: 11px;
+    color: #245747;
+    font-weight: 600;
+    padding: 4px 8px;
+}
+
+.rzp-checkout-btn {
+    width: 100%;
+    background: linear-gradient(135deg, #0b8b63, #087352);
+    color: white;
+    border: none;
+    padding: 13px 16px;
+    border-radius: 8px;
+    font-size: 14.5px;
+    font-weight: bold;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    box-shadow: 0 4px 14px rgba(11, 139, 99, 0.28);
+    transition: 0.2s;
+}
+
+.rzp-checkout-btn:hover {
+    background: linear-gradient(135deg, #077150, #065b40);
+    box-shadow: 0 6px 18px rgba(11, 139, 99, 0.38);
+    transform: translateY(-1px);
+}
+
+.rzp-checkout-btn:active {
+    transform: translateY(0);
+}
+
+#paymentAlert {
+    margin-top: 12px;
+    padding: 12px;
+    border-radius: 8px;
+    font-size: 12.5px;
+    text-align: center;
+    display: none;
+    animation: fadeIn 0.3s ease;
+}
+
+
+/* =====================================================
+   TABLE SELECTOR & CONTROLS
+===================================================== */
+
+.control-box {
+
+    background: white;
+
+    padding: 20px;
+
+    border-radius: 12px;
+
+    box-shadow:
+        0 5px 18px
+        rgba(0,0,0,.08);
+
+    margin-bottom: 20px;
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    gap: 15px;
+
+    flex-wrap: wrap;
+
+}
+
+
+select {
+
+    height: 45px;
+
+    padding:
+        0 15px;
+
+    border: 1px solid #ccc;
+
+    border-radius: 7px;
+
+    font-size: 15px;
+
+    min-width: 240px;
+
+}
+
+
+.action-buttons {
+
+    display: flex;
+
+    gap: 10px;
+
+}
+
+
+.btn {
+
+    border: none;
+
+    padding:
+        11px 18px;
+
+    border-radius: 7px;
+
+    color: white;
+
+    cursor: pointer;
+
+    font-weight: bold;
+
+}
+
+
+.btn-refresh {
+
+    background: #298bd1;
+
+}
+
+
+.btn-refresh:hover {
+
+    background: #2177b3;
+
+}
+
+
+/* =====================================================
+   TABLE
+===================================================== */
+
+.table-container {
+
+    background: white;
+
+    border-radius: 12px;
+
+    box-shadow:
+        0 5px 18px
+        rgba(0,0,0,.08);
+
+    overflow: auto;
+
+}
+
+
+table {
+
+    width: 100%;
+
+    border-collapse: collapse;
+
+    min-width: 900px;
+
+}
+
+
+thead {
+
+    background:
+        #298bd1;
+
+    color: white;
+
+}
+
+
+th {
+
+    padding: 14px 12px;
+
+    text-align: center;
+
+    font-size: 14px;
+
+    white-space: nowrap;
+
+}
+
+
+td {
+
+    padding: 13px 12px;
+
+    text-align: center;
+
+    border-bottom:
+        1px solid #ddd;
+
+    font-size: 14px;
+
+}
+
+
+tbody tr:nth-child(even) {
+
+    background: #f8f8f8;
+
+}
+
+
+tbody tr:hover {
+
+    background: #eef6ff;
+
+}
+
+
+/* =====================================================
+   EMPTY
+===================================================== */
+
+.empty {
+
+    padding: 50px;
+
+    text-align: center;
+
+    color: #888;
+
+}
+
+
+/* =====================================================
+   LOADING
+===================================================== */
+
+.loading {
+
+    text-align: center;
+
+    padding: 40px;
+
+    color: #777;
+
+}
+
+
+/* =====================================================
+   RESPONSIVE
+===================================================== */
+
+@media(max-width:1050px) {
+
+    .dashboard-features-grid {
+
+        grid-template-columns: 1fr;
+
+    }
+
+}
+
+
+@media(max-width:900px) {
+
+    .container {
+
+        padding:
+            25px 20px;
+
+    }
+
+
+    .stats {
+
+        grid-template-columns:
+            repeat(2, 1fr);
+
+    }
+
+}
+
+
+@media(max-width:600px) {
+
+    .header {
+
+        padding: 0 15px;
+
+    }
+
+
+    .logo {
+
+        font-size: 17px;
+
+    }
+
+
+    .user-badge {
+
+        display: none;
+
+    }
+
+
+    .stats {
+
+        grid-template-columns: 1fr;
+
+    }
+
+
+    .ai-header {
+
+        padding: 14px 16px;
+
+    }
+
+
+    .ai-input-bar {
+
+        padding: 12px;
+
+    }
+
+
+    .ai-send-btn {
+
+        padding: 0 16px;
+
+    }
+
+}
+
+</style>
+
+<!-- Razorpay Checkout SDK -->
+<script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+
+</head>
+
+
+<body>
+
+
+<!-- =====================================================
+     HEADER
+===================================================== -->
+
+<header class="header">
+
+
+    <div class="logo">
+
+        <span>🏡</span>
+
+        Digital Village Administration System
+
+    </div>
+
+
+    <div class="header-right">
+
+        <div
+            class="user-badge"
+            id="userNameBadge"
+        >
+            👤 <span id="userName">Citizen</span>
+        </div>
+
+
+        <button
+            class="logout"
+            onclick="logout()"
+        >
+            Logout
+        </button>
+
+    </div>
+
+</header>
+
+
+
+<!-- =====================================================
+     MAIN
+===================================================== -->
+
+<main class="container">
+
+
+    <div class="page-title-row">
+
+        <div class="page-title">
+
+            <h1>
+                👤 User Dashboard
+            </h1>
+
+            <p>
+                View village records, pay taxes & fees via Razorpay, and ask any doubt to Gemini AI (Read-Only).
+            </p>
+
+        </div>
+
+        <div class="live-db-badge" title="Live database counts connected">
+            <span class="pulse-dot"></span> Live Database Connected
+        </div>
+
+    </div>
+
+
+
+    <!-- =================================================
+         STATISTICS (LIVE FROM DATABASE)
+    ================================================= -->
+
+    <div class="stats">
+
+
+        <div class="stat">
+
+            <span class="stat-live-tag">● Live DB</span>
+
+            <div class="stat-icon">
+                👥
+            </div>
+
+            <h3 id="citizenCount">
+                0
+            </h3>
+
+            <p>
+                Registered Citizens
+            </p>
+
+        </div>
+
+
+        <div class="stat">
+
+            <span class="stat-live-tag">● Live DB</span>
+
+            <div class="stat-icon">
+                📢
+            </div>
+
+            <h3 id="complaintCount">
+                0
+            </h3>
+
+            <p>
+                Village Complaints
+            </p>
+
+        </div>
+
+
+        <div class="stat">
+
+            <span class="stat-live-tag">● Live DB</span>
+
+            <div class="stat-icon">
+                📋
+            </div>
+
+            <h3 id="schemeCount">
+                0
+            </h3>
+
+            <p>
+                Active Schemes
+            </p>
+
+        </div>
+
+
+        <div class="stat">
+
+            <span class="stat-live-tag">● Live DB</span>
+
+            <div class="stat-icon">
+                📄
+            </div>
+
+            <h3 id="certificateCount">
+                0
+            </h3>
+
+            <p>
+                Issued Certificates
+            </p>
+
+        </div>
+
+    </div>
+
+
+
+    <!-- =================================================
+         GEMINI AI & UPI PAYMENT GRID
+    ================================================= -->
+
+    <div class="dashboard-features-grid">
+
+
+        <!-- 1. GEMINI AI ASSISTANT (ANSWERS ANY QUESTION) -->
+
+        <section class="ai-assistant-card" id="aiSection">
+
+
+            <div class="ai-header">
+
+                <div class="ai-header-left">
+
+                    <div class="ai-icon-pulse">
+                        🤖
+                    </div>
+
+                    <div class="ai-title-wrap">
+
+                        <h2>
+                            Gemini AI கிராம நிர்வாக உதவியாளர் (Any Question / Doubt)
+                        </h2>
+
+                        <p>
+                            Ask ANY question about village schemes, certificates, complaints, taxes, farming, or daily knowledge!
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="ai-badge">
+                    ✨ Gemini 24/7 AI
+                </div>
+
+            </div>
+
+
+            <!-- Quick Suggestions -->
+
+            <div class="ai-suggestions">
+
+                <span class="ai-suggestions-label">
+                    💡 Quick Topics:
+                </span>
+
+                <button
+                    type="button"
+                    class="suggestion-chip"
+                    onclick="askSuggestion('கிராமத்தில் உள்ள அரசு திட்டங்கள் என்னென்ன? (What are the schemes?)')"
+                >
+                    📋 அரசு திட்டங்கள்
+                </button>
+
+                <button
+                    type="button"
+                    class="suggestion-chip"
+                    onclick="askSuggestion('வருமான சான்றிதழ் பெற என்ன ஆவணங்கள் தேவை? (Income Certificate docs)')"
+                >
+                    📄 சான்றிதழ் வழிமுறைகள்
+                </button>
+
+                <button
+                    type="button"
+                    class="suggestion-chip"
+                    onclick="askSuggestion('குடிநீர் மற்றும் தெருவிளக்கு பழுது புகார் செய்வது எப்படி?')"
+                >
+                    📢 புகார் பதிவு
+                </button>
+
+                <button
+                    type="button"
+                    class="suggestion-chip"
+                    onclick="askSuggestion('விவசாயிகள் நலத்திட்டங்கள் & PM Kisan பற்றி சொல்லுங்கள்')"
+                >
+                    🌾 விவசாய நலன்
+                </button>
+
+                <button
+                    type="button"
+                    class="suggestion-chip"
+                    onclick="askSuggestion('Razorpay மூலம் கிராம சேவை வரி மற்றும் கட்டணம் செலுத்துவது எப்படி? (How to pay fee via Razorpay?)')"
+                >
+                    💳 Razorpay கட்டணம்
+                </button>
+
+            </div>
+
+
+            <!-- Chat History -->
+
+            <div class="ai-chat-body" id="chatBox">
+
+                <div class="ai-message bot">
+
+                    <div class="message-avatar">
+                        🤖
+                    </div>
+
+                    <div class="message-content">
+
+                        <p>
+                            <strong>வணக்கம்! (Welcome!)</strong> நான் உங்கள் டிஜிட்டல் கிராம நிர்வாக Gemini AI உதவியாளர்.
+                        </p>
+
+                        <p>
+                            கிராம அரசு திட்டங்கள், சான்றிதழ்கள், புகார்கள், வரி விபரங்கள் அல்லது உங்களுக்கு ஏதேனும் கேள்விகள் / சந்தேகங்கள் இருந்தால் கேளுங்கள். நான் உடனடியாக சரியான பதிலை அளிப்பேன்!
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- Typing Indicator -->
+
+            <div class="ai-typing" id="aiTyping">
+
+                <span>🤖 Gemini AI யோசிக்கிறது (Thinking)...</span>
+
+                <div class="typing-dots">
+                    <span class="typing-dot"></span>
+                    <span class="typing-dot"></span>
+                    <span class="typing-dot"></span>
+                </div>
+
+            </div>
+
+
+            <!-- Input Area -->
+
+            <form
+                class="ai-input-bar"
+                id="aiChatForm"
+                onsubmit="sendAiMessage(event)"
+            >
+
+                <input
+                    type="text"
+                    id="aiUserInput"
+                    placeholder="உங்கள் கேள்வியை தமிழில் அல்லது ஆங்கிலத்தில் கேட்கவும்... (Ask any question)"
+                    autocomplete="off"
+                    required
+                >
+
+                <button
+                    type="submit"
+                    class="ai-send-btn"
+                    id="aiSendBtn"
+                >
+                    <span>Send</span> 🚀
+                </button>
+
+                <button
+                    type="button"
+                    class="ai-clear-btn"
+                    onclick="clearChat()"
+                    title="Clear Chat History"
+                >
+                    🗑️ Clear
+                </button>
+
+            </form>
+
+
+        </section>
+
+
+
+        <!-- 2. RAZORPAY PAYMENT CARD -->
+
+        <section class="payment-card" id="paymentSection">
+
+            <div>
+
+                <div class="payment-header">
+
+                    <div class="payment-icon">
+                        💳
+                    </div>
+
+                    <div class="payment-title">
+
+                        <div style="display: flex; align-items: center; justify-content: space-between; gap: 8px;">
+                            <h3>Razorpay Online Payment</h3>
+                            <span class="rzp-pill">⚡ Razorpay</span>
+                        </div>
+
+                        <p>
+                            Secure online payment for village taxes, certificates & services
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="payment-details-box">
+
+                    <div class="payment-form-group">
+                        <label for="payTaxType" style="display: block; font-size: 12px; font-weight: bold; color: #335447; margin-bottom: 5px;">
+                            🏛️ Select Service / Tax Type:
+                        </label>
+                        <select id="payTaxType" class="payment-input-select" onchange="onTaxTypeChange()">
+                            <option value="Village Service Fee">Village Service Fee (கிராம சேவை கட்டணம்)</option>
+                            <option value="Property Tax">Property Tax (சொத்து வரி)</option>
+                            <option value="Water Tax">Water Tax (குடிநீர் வரி)</option>
+                            <option value="Certificate Application Fee">Certificate Fee (சான்றிதழ் கட்டணம்)</option>
+                            <option value="Sanitation & Street Light Fee">Sanitation & Light Fee (தூய்மை பணி கட்டணம்)</option>
+                            <option value="General Village Development">Village Development (பொது கிராம நிதி)</option>
+                        </select>
+                    </div>
+
+                    <div class="payment-form-group" style="margin-top: 12px;">
+                        <label style="display: block; font-size: 12px; font-weight: bold; color: #335447; margin-bottom: 5px;">
+                            💰 Select or Enter Amount:
+                        </label>
+                        <div class="quick-amounts">
+                            <button type="button" class="amount-btn active" onclick="setPaymentAmount(1, this)">₹1</button>
+                            <button type="button" class="amount-btn" onclick="setPaymentAmount(10, this)">₹10</button>
+                            <button type="button" class="amount-btn" onclick="setPaymentAmount(50, this)">₹50</button>
+                            <button type="button" class="amount-btn" onclick="setPaymentAmount(100, this)">₹100</button>
+                            <button type="button" class="amount-btn" onclick="setPaymentAmount(500, this)">₹500</button>
+                        </div>
+                        <div class="custom-amount-wrap" style="margin-top: 8px;">
+                            <span class="currency-symbol">₹</span>
+                            <input
+                                type="number"
+                                id="paymentAmountInput"
+                                min="1"
+                                step="1"
+                                value="1"
+                                placeholder="Enter Amount"
+                                oninput="onCustomAmountInput(this.value)"
+                            />
+                        </div>
+                    </div>
+
+                    <div style="margin-top: 12px; padding-top: 10px; border-top: 1px dashed #cce8dc;">
+                        <div class="payment-row">
+                            <span>Citizen Name:</span>
+                            <strong id="payCitizenNameDisplay">Citizen User</strong>
+                        </div>
+                        <div class="payment-row">
+                            <span>Mobile Contact:</span>
+                            <strong id="payCitizenMobileDisplay">8760114592</strong>
+                        </div>
+                        <div class="payment-row">
+                            <span>Payment Key ID:</span>
+                            <strong style="color: #0b8b63; font-family: monospace; font-size: 11.5px;">rzp_test_TaZ1JYsRl01YUj</strong>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- Accepted Methods Bar -->
+                <div class="rzp-methods-bar">
+                    <span class="rzp-method-tag">🟢 Google Pay</span>
+                    <span class="rzp-method-tag">🟣 PhonePe</span>
+                    <span class="rzp-method-tag">🔵 Paytm</span>
+                    <span class="rzp-method-tag">💳 Cards</span>
+                    <span class="rzp-method-tag">🏦 NetBanking</span>
+                </div>
+
+                <!-- One Click Pay with Razorpay Button -->
+                <button
+                    type="button"
+                    class="rzp-checkout-btn"
+                    id="rzpPayBtn"
+                    onclick="openRazorpayCheckout()"
+                >
+                    <span>💳 Pay ₹<span id="rzpBtnAmountText">1</span> with Razorpay</span>
+                    <span style="font-size: 11px; opacity: 0.9;">🔒 256-Bit SSL Secure</span>
+                </button>
+
+            </div>
+
+            <!-- Status & Receipt Alert Box -->
+            <div>
+                <div id="paymentAlert"></div>
+            </div>
+
+        </section>
+
+
+    </div>
+
+
+
+    <!-- =================================================
+         CONTROLS
+    ================================================= -->
+
+    <div class="control-box">
+
+
+        <div>
+
+            <strong>
+                Select Record Table
+            </strong>
+
+            <br>
+
+            <select
+                id="tableSelect"
+                onchange="loadTable()"
+            >
+
+                <option value="citizens">
+                    Citizens
+                </option>
+
+                <option value="complaints">
+                    Complaints
+                </option>
+
+                <option value="schemes">
+                    Government Schemes
+                </option>
+
+                <option value="birth_records">
+                    Birth Records
+                </option>
+
+                <option value="death_records">
+                    Death Records
+                </option>
+
+                <option value="tax_records">
+                    Tax Records
+                </option>
+
+                <option value="certificates">
+                    Certificates
+                </option>
+
+            </select>
+
+        </div>
+
+
+        <div class="action-buttons">
+
+            <button
+                class="btn btn-refresh"
+                onclick="loadTable(); loadDashboardStats();"
+            >
+                ↻ Refresh Live Data
+            </button>
+
+        </div>
+
+    </div>
+
+
+
+    <!-- =================================================
+         TABLE (READ ONLY - NO EDIT OPTION)
+    ================================================= -->
+
+    <div class="table-container">
+
+        <div
+            id="loading"
+            class="loading"
+        >
+            Loading live data from database...
+        </div>
+
+
+        <table
+            id="dataTable"
+            style="display:none"
+        >
+
+            <thead id="tableHead"></thead>
+
+            <tbody id="tableBody"></tbody>
+
+        </table>
+
+
+        <div
+            id="empty"
+            class="empty"
+            style="display:none"
+        >
+            No records found.
+        </div>
+
+    </div>
+
+
+</main>
+
+
+
+<script>
+
+
+/* =====================================================
+   LOGIN CHECK (USER ONLY)
+===================================================== */
+
+const userLoggedIn =
+    sessionStorage.getItem(
+        "userLoggedIn"
+    );
+
+const loginType =
+    sessionStorage.getItem(
+        "loginType"
+    );
+
+const isLoggedIn =
+    sessionStorage.getItem(
+        "isLoggedIn"
+    );
+
+
+if (
+    userLoggedIn !== "true" &&
+    loginType !== "user" &&
+    isLoggedIn !== "true"
+) {
+
+    window.location.href =
+        "/";
+
+}
+
+
+const currentUserName =
+    sessionStorage.getItem(
+        "userName"
+    ) ||
+    sessionStorage.getItem(
+        "userMobile"
+    ) || "Citizen User";
+
+const currentUserMobile =
+    sessionStorage.getItem(
+        "userMobile"
+    ) || "8760114592";
+
+
+document.getElementById(
+    "userName"
+).textContent = currentUserName;
+
+syncPaymentUserData();
+
+
+
+/* =====================================================
+   VARIABLES
+===================================================== */
+
+let currentTable =
+    "citizens";
+
+let currentColumns = [];
+
+let chatHistory = [];
+
+
+
+/* =====================================================
+   GEMINI AI BOT CHAT FUNCTIONS
+===================================================== */
+
+async function sendAiMessage(event) {
+
+    if (event) event.preventDefault();
+
+    const input = document.getElementById("aiUserInput");
+    const sendBtn = document.getElementById("aiSendBtn");
+    const chatBox = document.getElementById("chatBox");
+    const typingIndicator = document.getElementById("aiTyping");
+
+    const message = input.value.trim();
+    if (!message) return;
+
+    // Append User Message to UI
+    appendChatMessage("user", message);
+    input.value = "";
+    sendBtn.disabled = true;
+
+    // Show typing
+    typingIndicator.style.display = "flex";
+    chatBox.scrollTop = chatBox.scrollHeight;
+
+    try {
+
+        const response = await fetch("/api/ai/chat", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                message: message,
+                history: chatHistory
+            })
+        });
+
+        const data = await response.json();
+
+        typingIndicator.style.display = "none";
+        sendBtn.disabled = false;
+
+        if (response.ok && data.success) {
+
+            appendChatMessage("bot", data.reply);
+
+            // Update local conversation history
+            chatHistory.push({ sender: "user", text: message });
+            chatHistory.push({ sender: "bot", text: data.reply });
+
+        } else {
+
+            appendChatMessage(
+                "bot",
+                "⚠️ " + (data.message || "மன்னிக்கவும், AI சேவையில் பிழை ஏற்பட்டுள்ளது. சிறிது நேரம் கழித்து முயற்சிக்கவும்.")
+            );
+
+        }
+
+    } catch (error) {
+
+        console.error("Chat error:", error);
+        typingIndicator.style.display = "none";
+        sendBtn.disabled = false;
+
+        appendChatMessage(
+            "bot",
+            "❌ சேவையகத்தை இணைக்க முடியவில்லை. தயவுசெய்து உங்கள் இணைய இணைப்பை சரிபார்க்கவும்."
+        );
+
+    }
+
+    input.focus();
+
+}
+
+
+function askSuggestion(question) {
+
+    const input = document.getElementById("aiUserInput");
+    input.value = question;
+    sendAiMessage();
+
+}
+
+
+function appendChatMessage(sender, text) {
+
+    const chatBox = document.getElementById("chatBox");
+    const msgDiv = document.createElement("div");
+    msgDiv.className = `ai-message ${sender}`;
+
+    const avatar = document.createElement("div");
+    avatar.className = "message-avatar";
+    avatar.textContent = sender === "user" ? "👤" : "🤖";
+
+    const content = document.createElement("div");
+    content.className = "message-content";
+
+    if (sender === "bot") {
+        content.innerHTML = formatMarkdownText(text);
+    } else {
+        content.textContent = text;
+    }
+
+    msgDiv.appendChild(avatar);
+    msgDiv.appendChild(content);
+
+    chatBox.appendChild(msgDiv);
+    chatBox.scrollTop = chatBox.scrollHeight;
+
+}
+
+
+function formatMarkdownText(rawText) {
+
+    if (!rawText) return "";
+
+    let safe = escapeHTML(rawText);
+
+    // Bold **text**
+    safe = safe.replace(/\*\*(.*?)\*\*/g, "<strong>$1</strong>");
+
+    // Bullet points * or -
+    const lines = safe.split("\n");
+    let formatted = "";
+    let inList = false;
+
+    lines.forEach(line => {
+        const trimmed = line.trim();
+        if (trimmed.startsWith("* ") || trimmed.startsWith("- ")) {
+            if (!inList) {
+                formatted += "<ul>";
+                inList = true;
+            }
+            formatted += `<li>${trimmed.substring(2)}</li>`;
+        } else if (/^\d+\.\s/.test(trimmed)) {
+            if (!inList) {
+                formatted += "<ol>";
+                inList = true;
+            }
+            formatted += `<li>${trimmed.replace(/^\d+\.\s/, "")}</li>`;
+        } else {
+            if (inList) {
+                formatted += "</ul>";
+                inList = false;
+            }
+            if (trimmed.length > 0) {
+                formatted += `<p>${trimmed}</p>`;
+            }
+        }
+    });
+
+    if (inList) {
+        formatted += "</ul>";
+    }
+
+    return formatted || safe;
+
+}
+
+
+function clearChat() {
+
+    chatHistory = [];
+
+    const chatBox = document.getElementById("chatBox");
+
+    chatBox.innerHTML = `
+        <div class="ai-message bot">
+            <div class="message-avatar">🤖</div>
+            <div class="message-content">
+                <p><strong>உரையாடல் அழிக்கப்பட்டது (Chat Cleared).</strong></p>
+                <p>உங்களுக்கு தேவையான எந்த ஒரு கேள்வியையும் அல்லது சந்தேகத்தையும் இங்கே கேளுங்கள்!</p>
+            </div>
+        </div>
+    `;
+
+}
+
+
+
+/* =====================================================
+   RAZORPAY PAYMENT INTEGRATION
+   Key: rzp_test_TaZ1JYsRl01YUj
+===================================================== */
+
+const RAZORPAY_KEY_ID = "rzp_test_TaZ1JYsRl01YUj";
+
+let selectedPaymentAmount = 1;
+
+function syncPaymentUserData() {
+    try {
+        const nameEl = document.getElementById("payCitizenNameDisplay");
+        const mobileEl = document.getElementById("payCitizenMobileDisplay");
+        if (nameEl) nameEl.textContent = currentUserName || "Citizen User";
+        if (mobileEl) mobileEl.textContent = currentUserMobile || "8760114592";
+    } catch (e) {
+        console.error("syncPaymentUserData error:", e);
+    }
+}
+
+function setPaymentAmount(amount, buttonElement) {
+    selectedPaymentAmount = Math.max(1, Number(amount) || 1);
+    const input = document.getElementById("paymentAmountInput");
+    if (input) input.value = selectedPaymentAmount;
+    updatePayDisplay();
+
+    document.querySelectorAll(".quick-amounts .amount-btn").forEach(btn => btn.classList.remove("active"));
+    if (buttonElement) buttonElement.classList.add("active");
+}
+
+function onCustomAmountInput(val) {
+    const num = Number(val);
+    if (num > 0) {
+        selectedPaymentAmount = num;
+        updatePayDisplay();
+    }
+    document.querySelectorAll(".quick-amounts .amount-btn").forEach(btn => {
+        if (Number(btn.textContent.replace("₹", "").trim()) === num) {
+            btn.classList.add("active");
+        } else {
+            btn.classList.remove("active");
+        }
+    });
+}
+
+function onTaxTypeChange() {
+    updatePayDisplay();
+}
+
+function updatePayDisplay() {
+    const btnAmount = document.getElementById("rzpBtnAmountText");
+    if (btnAmount) {
+        btnAmount.textContent = selectedPaymentAmount;
+    }
+}
+
+async function openRazorpayCheckout() {
+    const alertBox = document.getElementById("paymentAlert");
+    const payBtn = document.getElementById("rzpPayBtn");
+    const taxTypeSelect = document.getElementById("payTaxType");
+    const taxType = taxTypeSelect ? taxTypeSelect.value : "Village Service Fee";
+    const amountInRupees = Math.max(1, Number(selectedPaymentAmount) || 1);
+
+    if (amountInRupees <= 0) {
+        alert("Please enter a valid amount greater than ₹0.");
+        return;
+    }
+
+    if (typeof Razorpay === "undefined") {
+        alertBox.style.display = "block";
+        alertBox.style.background = "#ffe8e8";
+        alertBox.style.color = "#c0392b";
+        alertBox.style.border = "1px solid #f5b7b1";
+        alertBox.textContent = "Razorpay SDK is loading. Please check your internet connection or refresh.";
+        return;
+    }
+
+    // Disable button to prevent double-clicks
+    payBtn.disabled = true;
+    payBtn.style.opacity = "0.75";
+
+    const options = {
+        key: RAZORPAY_KEY_ID,
+        amount: Math.round(amountInRupees * 100), // in paise
+        currency: "INR",
+        name: "Digital Village Administration",
+        description: `${taxType} Payment - ₹${amountInRupees}`,
+        image: "https://cdn-icons-png.flaticon.com/512/609/609803.png",
+        handler: async function (response) {
+            payBtn.disabled = false;
+            payBtn.style.opacity = "1";
+            await recordRazorpaySuccess(response, amountInRupees, taxType);
+        },
+        prefill: {
+            name: currentUserName || "Citizen User",
+            contact: currentUserMobile || "8760114592",
+            email: "citizen@digitalvillage.gov.in"
+        },
+        notes: {
+            tax_type: taxType,
+            village_service: "Digital Village Portal",
+            citizen_name: currentUserName
+        },
+        theme: {
+            color: "#0b8b63"
+        },
+        modal: {
+            ondismiss: function () {
+                payBtn.disabled = false;
+                payBtn.style.opacity = "1";
+                console.log("Razorpay checkout closed by user");
+            }
+        }
+    };
+
+    try {
+        const rzp = new Razorpay(options);
+        rzp.on("payment.failed", function (response) {
+            payBtn.disabled = false;
+            payBtn.style.opacity = "1";
+            alertBox.style.display = "block";
+            alertBox.style.background = "#ffe8e8";
+            alertBox.style.color = "#c0392b";
+            alertBox.style.border = "1px solid #f5b7b1";
+            alertBox.innerHTML = `❌ <strong>Payment Unsuccessful!</strong> ${response.error?.description || "Transaction canceled or failed"}`;
+        });
+        rzp.open();
+    } catch (err) {
+        payBtn.disabled = false;
+        payBtn.style.opacity = "1";
+        console.error("Razorpay open error:", err);
+        alertBox.style.display = "block";
+        alertBox.style.background = "#ffe8e8";
+        alertBox.style.color = "#c0392b";
+        alertBox.style.border = "1px solid #f5b7b1";
+        alertBox.textContent = "Error initiating Razorpay: " + err.message;
+    }
+}
+
+async function recordRazorpaySuccess(rzpResponse, amount, taxType) {
+    const alertBox = document.getElementById("paymentAlert");
+    alertBox.style.display = "block";
+    alertBox.style.background = "#eef6fc";
+    alertBox.style.color = "#1d4ed8";
+    alertBox.style.border = "1px solid #bfdbfe";
+    alertBox.innerHTML = `⏳ <strong>Recording payment...</strong> ID: ${rzpResponse.razorpay_payment_id}`;
+
+    try {
+        const response = await fetch("/api/payment/razorpay-record", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                mobile: currentUserMobile,
+                citizen_name: currentUserName,
+                amount: amount,
+                service_name: taxType,
+                razorpay_payment_id: rzpResponse.razorpay_payment_id,
+                razorpay_order_id: rzpResponse.razorpay_order_id || "DIRECT_PAY"
+            })
+        });
+
+        const data = await response.json();
+
+        if (data.success) {
+            alertBox.style.background = "#e7f8ef";
+            alertBox.style.color = "#087f5b";
+            alertBox.style.border = "1px solid #a9dfbf";
+            alertBox.innerHTML = `
+                <div style="padding: 4px 0;">
+                    <div style="font-size: 14.5px; font-weight: bold; margin-bottom: 6px; color: #087f5b;">
+                        🎉 Payment Successful via Razorpay!
+                    </div>
+                    <div style="font-size: 12.5px; line-height: 1.6; text-align: left; background: white; padding: 10px 12px; border-radius: 6px; border: 1px solid #cce8dc;">
+                        <div><strong>Razorpay Payment ID:</strong> <code style="color: #0b8b63; font-weight: bold;">${rzpResponse.razorpay_payment_id}</code></div>
+                        <div><strong>Citizen:</strong> ${currentUserName}</div>
+                        <div><strong>Service / Tax:</strong> ${taxType}</div>
+                        <div><strong>Amount Paid:</strong> ₹${amount}.00</div>
+                        <div><strong>Database Status:</strong> <span style="color: #087f5b; font-weight: bold;">✅ Recorded in Taxes & Payments</span></div>
+                    </div>
+                    <button type="button" onclick="window.print()" style="margin-top: 8px; padding: 6px 14px; background: #0b8b63; color: white; border: none; border-radius: 5px; font-size: 12px; font-weight: bold; cursor: pointer;">
+                        🖨️ Print Receipt
+                    </button>
+                </div>
+            `;
+
+            // Refresh live stats & table
+            loadDashboardStats();
+            if (currentTable === "tax_records" || currentTable === "taxes" || currentTable === "payments") {
+                loadTable();
+            }
+        } else {
+            alertBox.style.background = "#ffe8e8";
+            alertBox.style.color = "#c0392b";
+            alertBox.style.border = "1px solid #f5b7b1";
+            alertBox.textContent = data.message || "Failed to record payment in database.";
+        }
+    } catch (e) {
+        console.error("Razorpay backend record error:", e);
+        alertBox.style.background = "#ffe8e8";
+        alertBox.style.color = "#c0392b";
+        alertBox.style.border = "1px solid #f5b7b1";
+        alertBox.textContent = "Server error while saving payment record.";
+    }
+}
+
+
+
+
+/* =====================================================
+   LOAD DASHBOARD STATS (LIVE DATABASE COUNTS)
+===================================================== */
+
+async function loadDashboardStats() {
+
+    try {
+
+        const response =
+            await fetch(
+                "/api/dashboard-stats"
+            );
+
+
+        const data =
+            await response.json();
+
+
+        if (data.success) {
+
+            document.getElementById(
+                "citizenCount"
+            ).textContent =
+                data.citizens || 0;
+
+
+            document.getElementById(
+                "complaintCount"
+            ).textContent =
+                data.complaints || 0;
+
+
+            document.getElementById(
+                "schemeCount"
+            ).textContent =
+                data.schemes || 0;
+
+
+            document.getElementById(
+                "certificateCount"
+            ).textContent =
+                data.certificates || 0;
+
+        }
+
+    }
+
+    catch(error) {
+
+        console.error(
+            "Statistics error:",
+            error
+        );
+
+    }
+
+}
+
+
+
+/* =====================================================
+   LOAD TABLE (READ ONLY)
+===================================================== */
+
+async function loadTable() {
+
+    currentTable =
+        document.getElementById(
+            "tableSelect"
+        ).value;
+
+
+    const loading =
+        document.getElementById(
+            "loading"
+        );
+
+
+    const table =
+        document.getElementById(
+            "dataTable"
+        );
+
+
+    const empty =
+        document.getElementById(
+            "empty"
+        );
+
+
+    loading.style.display =
+        "block";
+
+    table.style.display =
+        "none";
+
+    empty.style.display =
+        "none";
+
+
+    try {
+
+        const response =
+            await fetch(
+                `/api/admin/table/${currentTable}`
+            );
+
+
+        const data =
+            await response.json();
+
+
+        if (!response.ok) {
+
+            throw new Error(
+                data.message ||
+                "Unable to load table."
+            );
+
+        }
+
+
+        // Hide password column from citizens table in read-only user view for privacy/security
+        currentColumns = (data.columns || []).filter(
+            col => col.toLowerCase() !== "password"
+        );
+
+
+        renderTable(
+            data.rows || []
+        );
+
+    }
+
+    catch(error) {
+
+        console.error(error);
+
+
+        loading.textContent =
+            "❌ " +
+            error.message;
+
+    }
+
+}
+
+
+
+/* =====================================================
+   RENDER TABLE (READ-ONLY: NO EDIT BUTTONS)
+===================================================== */
+
+function renderTable(rows) {
+
+    const loading =
+        document.getElementById(
+            "loading"
+        );
+
+
+    const table =
+        document.getElementById(
+            "dataTable"
+        );
+
+
+    const head =
+        document.getElementById(
+            "tableHead"
+        );
+
+
+    const body =
+        document.getElementById(
+            "tableBody"
+        );
+
+
+    const empty =
+        document.getElementById(
+            "empty"
+        );
+
+
+    loading.style.display =
+        "none";
+
+
+    head.innerHTML = "";
+
+    body.innerHTML = "";
+
+
+    if (
+        !rows ||
+        rows.length === 0
+    ) {
+
+        table.style.display =
+            "none";
+
+        empty.style.display =
+            "block";
+
+        return;
+
+    }
+
+
+    table.style.display =
+        "table";
+
+
+    empty.style.display =
+        "none";
+
+
+    /* HEADER - NO ACTION / EDIT COLUMN */
+
+    let headerHTML =
+        "<tr>";
+
+
+    currentColumns.forEach(
+        column => {
+
+            headerHTML +=
+                `<th>${escapeHTML(formatColumnName(column))}</th>`;
+
+        }
+    );
+
+
+    headerHTML +=
+        "</tr>";
+
+
+    head.innerHTML =
+        headerHTML;
+
+
+
+    /* BODY - NO EDIT BUTTONS */
+
+    rows.forEach(
+        row => {
+
+            let html =
+                "<tr>";
+
+
+            currentColumns.forEach(
+                column => {
+
+                    let value =
+                        row[column];
+
+
+                    if (
+                        value === null ||
+                        value === undefined
+                    ) {
+
+                        value = "";
+
+                    }
+
+
+                    html +=
+                        `<td>${escapeHTML(String(value))}</td>`;
+
+                }
+            );
+
+
+            html +=
+                "</tr>";
+
+
+            body.innerHTML +=
+                html;
+
+        }
+    );
+
+}
+
+
+
+/* =====================================================
+   LOGOUT
+===================================================== */
+
+function logout() {
+
+    sessionStorage.clear();
+
+    window.location.href =
+        "/";
+
+}
+
+
+
+/* =====================================================
+   FORMAT COLUMN
+===================================================== */
+
+function formatColumnName(
+    name
+) {
+
+    return name
+
+        .replace(
+            /_/g,
+            " "
+        )
+
+        .replace(
+            /\b\w/g,
+            char =>
+                char.toUpperCase()
+        );
+
+}
+
+
+
+/* =====================================================
+   ESCAPE HTML
+===================================================== */
+
+function escapeHTML(
+    value
+) {
+
+    return String(value)
+
+        .replace(
+            /&/g,
+            "&amp;"
+        )
+
+        .replace(
+            /</g,
+            "&lt;"
+        )
+
+        .replace(
+            />/g,
+            "&gt;"
+        )
+
+        .replace(
+            /"/g,
+            "&quot;"
+        )
+
+        .replace(
+            /'/g,
+            "&#039;"
+        );
+
+}
+
+
+
+/* =====================================================
+   INITIALIZE
+===================================================== */
+
+loadDashboardStats();
+
+loadTable();
+
+// Periodically update live database counts every 12 seconds
+setInterval(loadDashboardStats, 12000);
+
+</script>
+
+
+</body>
+
+</html>

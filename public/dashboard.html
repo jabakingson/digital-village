@@ -1,0 +1,1935 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+>
+
+<title>Admin Dashboard | Digital Village</title>
+
+
+<style>
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+body {
+
+    font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
+
+    background: #f2f5fb;
+
+    color: #26364d;
+
+}
+
+
+/* =====================================================
+   HEADER
+===================================================== */
+
+.header {
+
+    height: 72px;
+
+    background:
+        #304761;
+
+    color: white;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    padding: 0 35px;
+
+    box-shadow:
+        0 3px 12px
+        rgba(0,0,0,.15);
+
+}
+
+
+.logo {
+
+    font-size: 24px;
+
+    font-weight: bold;
+
+}
+
+
+.logo span {
+
+    margin-right: 10px;
+
+}
+
+
+.header-right {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 15px;
+
+}
+
+
+.admin-name {
+
+    font-size: 14px;
+
+}
+
+
+.logout {
+
+    border: none;
+
+    background: #ef4b3f;
+
+    color: white;
+
+    padding:
+        11px 22px;
+
+    border-radius: 7px;
+
+    cursor: pointer;
+
+    font-weight: bold;
+
+}
+
+
+.logout:hover {
+
+    background: #d93c31;
+
+}
+
+
+/* =====================================================
+   MAIN
+===================================================== */
+
+.container {
+
+    padding: 30px 55px;
+
+}
+
+
+/* =====================================================
+   TITLE
+===================================================== */
+
+.page-title {
+
+    margin-bottom: 25px;
+
+}
+
+
+.page-title h1 {
+
+    font-size: 28px;
+
+    margin-bottom: 8px;
+
+}
+
+
+.page-title p {
+
+    color: #777;
+
+}
+
+
+/* =====================================================
+   STATISTICS
+===================================================== */
+
+.stats {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(4, 1fr);
+
+    gap: 20px;
+
+    margin-bottom: 30px;
+
+}
+
+
+.stat {
+
+    background: white;
+
+    border-radius: 12px;
+
+    padding: 22px;
+
+    box-shadow:
+        0 5px 18px
+        rgba(0,0,0,.08);
+
+}
+
+
+.stat-icon {
+
+    font-size: 30px;
+
+    margin-bottom: 10px;
+
+}
+
+
+.stat h3 {
+
+    font-size: 28px;
+
+    margin-bottom: 5px;
+
+}
+
+
+.stat p {
+
+    color: #888;
+
+}
+
+
+/* =====================================================
+   TABLE SELECTOR
+===================================================== */
+
+.control-box {
+
+    background: white;
+
+    padding: 20px;
+
+    border-radius: 12px;
+
+    box-shadow:
+        0 5px 18px
+        rgba(0,0,0,.08);
+
+    margin-bottom: 20px;
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    gap: 15px;
+
+    flex-wrap: wrap;
+
+}
+
+
+select {
+
+    height: 45px;
+
+    padding:
+        0 15px;
+
+    border: 1px solid #ccc;
+
+    border-radius: 7px;
+
+    font-size: 15px;
+
+    min-width: 240px;
+
+}
+
+
+.action-buttons {
+
+    display: flex;
+
+    gap: 10px;
+
+}
+
+
+.btn {
+
+    border: none;
+
+    padding:
+        11px 18px;
+
+    border-radius: 7px;
+
+    color: white;
+
+    cursor: pointer;
+
+    font-weight: bold;
+
+}
+
+
+.btn-add {
+
+    background: #0b8b63;
+
+}
+
+
+.btn-refresh {
+
+    background: #298bd1;
+
+}
+
+
+.btn-add:hover {
+
+    background: #076c4d;
+
+}
+
+
+.btn-refresh:hover {
+
+    background: #2177b3;
+
+}
+
+
+/* =====================================================
+   TABLE
+===================================================== */
+
+.table-container {
+
+    background: white;
+
+    border-radius: 12px;
+
+    box-shadow:
+        0 5px 18px
+        rgba(0,0,0,.08);
+
+    overflow: auto;
+
+}
+
+
+table {
+
+    width: 100%;
+
+    border-collapse: collapse;
+
+    min-width: 900px;
+
+}
+
+
+thead {
+
+    background:
+        #298bd1;
+
+    color: white;
+
+}
+
+
+th {
+
+    padding: 14px 12px;
+
+    text-align: center;
+
+    font-size: 14px;
+
+    white-space: nowrap;
+
+}
+
+
+td {
+
+    padding: 13px 12px;
+
+    text-align: center;
+
+    border-bottom:
+        1px solid #ddd;
+
+    font-size: 14px;
+
+}
+
+
+tbody tr:nth-child(even) {
+
+    background: #f8f8f8;
+
+}
+
+
+tbody tr:hover {
+
+    background: #eef6ff;
+
+}
+
+
+.action-cell {
+
+    display: flex;
+
+    gap: 8px;
+
+    justify-content: center;
+
+    align-items: center;
+
+}
+
+
+.edit-btn {
+
+    background: #f39c12;
+
+    color: white;
+
+    border: none;
+
+    padding:
+        7px 12px;
+
+    border-radius: 5px;
+
+    cursor: pointer;
+
+    font-weight: bold;
+
+    font-size: 13px;
+
+    transition: 0.2s;
+
+}
+
+
+.edit-btn:hover {
+
+    background: #d98200;
+
+}
+
+
+.delete-btn {
+
+    background: #e74c3c;
+
+    color: white;
+
+    border: none;
+
+    padding:
+        7px 12px;
+
+    border-radius: 5px;
+
+    cursor: pointer;
+
+    font-weight: bold;
+
+    font-size: 13px;
+
+    transition: 0.2s;
+
+}
+
+
+.delete-btn:hover {
+
+    background: #c0392b;
+
+}
+
+
+/* =====================================================
+   EMPTY
+===================================================== */
+
+.empty {
+
+    padding: 50px;
+
+    text-align: center;
+
+    color: #888;
+
+}
+
+
+/* =====================================================
+   MODAL
+===================================================== */
+
+.modal {
+
+    position: fixed;
+
+    inset: 0;
+
+    background:
+        rgba(0,0,0,.55);
+
+    display: none;
+
+    align-items: center;
+
+    justify-content: center;
+
+    padding: 20px;
+
+    z-index: 999;
+
+}
+
+
+.modal.active {
+
+    display: flex;
+
+}
+
+
+.modal-box {
+
+    width: 100%;
+
+    max-width: 650px;
+
+    max-height: 90vh;
+
+    overflow-y: auto;
+
+    background: white;
+
+    border-radius: 12px;
+
+    padding: 25px;
+
+}
+
+
+.modal-header {
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    margin-bottom: 20px;
+
+}
+
+
+.modal-header h2 {
+
+    font-size: 22px;
+
+}
+
+
+.close {
+
+    border: none;
+
+    background: none;
+
+    font-size: 27px;
+
+    cursor: pointer;
+
+    color: #777;
+
+}
+
+
+.form-grid {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(2, 1fr);
+
+    gap: 15px;
+
+}
+
+
+.form-group {
+
+    display: flex;
+
+    flex-direction: column;
+
+}
+
+
+.form-group.full {
+
+    grid-column:
+        1 / -1;
+
+}
+
+
+.form-group label {
+
+    font-size: 14px;
+
+    font-weight: bold;
+
+    margin-bottom: 7px;
+
+}
+
+
+.form-group input,
+
+.form-group textarea,
+
+.form-group select {
+
+    width: 100%;
+
+    min-width: 0;
+
+    height: 42px;
+
+    border:
+        1px solid #ccc;
+
+    border-radius: 6px;
+
+    padding:
+        0 10px;
+
+    outline: none;
+
+}
+
+
+.form-group textarea {
+
+    height: 90px;
+
+    padding-top: 10px;
+
+    resize: vertical;
+
+}
+
+
+.modal-actions {
+
+    margin-top: 20px;
+
+    display: flex;
+
+    justify-content: flex-end;
+
+    gap: 10px;
+
+}
+
+
+.cancel {
+
+    background: #777;
+
+}
+
+
+.save {
+
+    background: #0b8b63;
+
+}
+
+
+/* =====================================================
+   LOADING
+===================================================== */
+
+.loading {
+
+    text-align: center;
+
+    padding: 40px;
+
+    color: #777;
+
+}
+
+
+/* =====================================================
+   RESPONSIVE
+===================================================== */
+
+@media(max-width:900px) {
+
+    .container {
+
+        padding:
+            25px 20px;
+
+    }
+
+
+    .stats {
+
+        grid-template-columns:
+            repeat(2, 1fr);
+
+    }
+
+}
+
+
+@media(max-width:600px) {
+
+    .header {
+
+        padding: 0 15px;
+
+    }
+
+
+    .logo {
+
+        font-size: 17px;
+
+    }
+
+
+    .admin-name {
+
+        display: none;
+
+    }
+
+
+    .stats {
+
+        grid-template-columns: 1fr;
+
+    }
+
+
+    .form-grid {
+
+        grid-template-columns: 1fr;
+
+    }
+
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<!-- =====================================================
+     HEADER
+===================================================== -->
+
+<header class="header">
+
+
+    <div class="logo">
+
+        <span>🏡</span>
+
+        Digital Village Administration System
+
+    </div>
+
+
+    <div class="header-right">
+
+        <div
+            class="admin-name"
+            id="adminName"
+        >
+            Admin
+        </div>
+
+
+        <button
+            class="logout"
+            onclick="logout()"
+        >
+            Logout
+        </button>
+
+    </div>
+
+</header>
+
+
+
+<!-- =====================================================
+     MAIN
+===================================================== -->
+
+<main class="container">
+
+
+    <div class="page-title">
+
+        <h1>
+            🛡️ Admin Dashboard
+        </h1>
+
+        <p>
+            Manage village records and administrative information.
+        </p>
+
+    </div>
+
+
+
+    <!-- =================================================
+         STATISTICS
+    ================================================= -->
+
+    <div class="stats">
+
+
+        <div class="stat">
+
+            <div class="stat-icon">
+                👥
+            </div>
+
+            <h3 id="citizenCount">
+                0
+            </h3>
+
+            <p>
+                Citizens
+            </p>
+
+        </div>
+
+
+        <div class="stat">
+
+            <div class="stat-icon">
+                📢
+            </div>
+
+            <h3 id="complaintCount">
+                0
+            </h3>
+
+            <p>
+                Complaints
+            </p>
+
+        </div>
+
+
+        <div class="stat">
+
+            <div class="stat-icon">
+                📋
+            </div>
+
+            <h3 id="schemeCount">
+                0
+            </h3>
+
+            <p>
+                Schemes
+            </p>
+
+        </div>
+
+
+        <div class="stat">
+
+            <div class="stat-icon">
+                📄
+            </div>
+
+            <h3 id="certificateCount">
+                0
+            </h3>
+
+            <p>
+                Certificates
+            </p>
+
+        </div>
+
+    </div>
+
+
+
+    <!-- =================================================
+         CONTROLS
+    ================================================= -->
+
+    <div class="control-box">
+
+
+        <div>
+
+            <strong>
+                Select Record Table
+            </strong>
+
+            <br>
+
+            <select
+                id="tableSelect"
+                onchange="loadTable()"
+            >
+
+                <option value="citizens">
+                    Citizens
+                </option>
+
+                <option value="complaints">
+                    Complaints
+                </option>
+
+                <option value="schemes">
+                    Government Schemes
+                </option>
+
+                <option value="birth_records">
+                    Birth Records
+                </option>
+
+                <option value="death_records">
+                    Death Records
+                </option>
+
+                <option value="tax_records">
+                    Tax Records
+                </option>
+
+                <option value="certificates">
+                    Certificates
+                </option>
+
+            </select>
+
+        </div>
+
+
+        <div class="action-buttons">
+
+            <button
+                class="btn btn-add"
+                onclick="openAddModal()"
+            >
+                + Add Record
+            </button>
+
+
+            <button
+                class="btn btn-refresh"
+                onclick="loadTable()"
+            >
+                ↻ Refresh
+            </button>
+
+        </div>
+
+    </div>
+
+
+
+    <!-- =================================================
+         TABLE
+    ================================================= -->
+
+    <div class="table-container">
+
+        <div
+            id="loading"
+            class="loading"
+        >
+            Loading data...
+        </div>
+
+
+        <table
+            id="dataTable"
+            style="display:none"
+        >
+
+            <thead id="tableHead"></thead>
+
+            <tbody id="tableBody"></tbody>
+
+        </table>
+
+
+        <div
+            id="empty"
+            class="empty"
+            style="display:none"
+        >
+            No records found.
+        </div>
+
+    </div>
+
+
+</main>
+
+
+
+<!-- =====================================================
+     MODAL
+===================================================== -->
+
+<div
+    class="modal"
+    id="recordModal"
+>
+
+
+    <div class="modal-box">
+
+
+        <div class="modal-header">
+
+            <h2 id="modalTitle">
+                Add Record
+            </h2>
+
+
+            <button
+                class="close"
+                onclick="closeModal()"
+            >
+                ×
+            </button>
+
+        </div>
+
+
+        <form id="recordForm">
+
+            <div
+                class="form-grid"
+                id="formFields"
+            >
+            </div>
+
+
+            <div class="modal-actions">
+
+                <button
+                    type="button"
+                    class="btn cancel"
+                    onclick="closeModal()"
+                >
+                    Cancel
+                </button>
+
+
+                <button
+                    type="submit"
+                    class="btn save"
+                >
+                    Save Record
+                </button>
+
+            </div>
+
+        </form>
+
+    </div>
+
+</div>
+
+
+
+<script>
+
+
+/* =====================================================
+   LOGIN CHECK
+===================================================== */
+
+const adminLoggedIn =
+    sessionStorage.getItem(
+        "adminLoggedIn"
+    );
+
+const loginType =
+    sessionStorage.getItem(
+        "loginType"
+    );
+
+
+if (
+    adminLoggedIn !== "true" &&
+    loginType !== "admin"
+) {
+
+    window.location.href =
+        "/admin-login";
+
+}
+
+
+document.getElementById(
+    "adminName"
+).textContent =
+    sessionStorage.getItem(
+        "adminName"
+    ) ||
+    sessionStorage.getItem(
+        "adminUsername"
+    ) || "Admin";
+
+
+
+/* =====================================================
+   VARIABLES
+===================================================== */
+
+let currentTable =
+    "citizens";
+
+let currentColumns = [];
+
+let editingId = null;
+
+
+
+/* =====================================================
+   LOAD DASHBOARD
+===================================================== */
+
+async function loadDashboardStats() {
+
+    try {
+
+        const response =
+            await fetch(
+                "/api/dashboard-stats"
+            );
+
+
+        const data =
+            await response.json();
+
+
+        if (data.success) {
+
+            document.getElementById(
+                "citizenCount"
+            ).textContent =
+                data.citizens || 0;
+
+
+            document.getElementById(
+                "complaintCount"
+            ).textContent =
+                data.complaints || 0;
+
+
+            document.getElementById(
+                "schemeCount"
+            ).textContent =
+                data.schemes || 0;
+
+
+            document.getElementById(
+                "certificateCount"
+            ).textContent =
+                data.certificates || 0;
+
+        }
+
+    }
+
+    catch(error) {
+
+        console.error(
+            "Statistics error:",
+            error
+        );
+
+    }
+
+}
+
+
+
+/* =====================================================
+   LOAD TABLE
+===================================================== */
+
+async function loadTable() {
+
+    currentTable =
+        document.getElementById(
+            "tableSelect"
+        ).value;
+
+
+    const loading =
+        document.getElementById(
+            "loading"
+        );
+
+
+    const table =
+        document.getElementById(
+            "dataTable"
+        );
+
+
+    const empty =
+        document.getElementById(
+            "empty"
+        );
+
+
+    loading.style.display =
+        "block";
+
+    table.style.display =
+        "none";
+
+    empty.style.display =
+        "none";
+
+
+    try {
+
+        const response =
+            await fetch(
+                `/api/admin/table/${currentTable}`
+            );
+
+
+        const data =
+            await response.json();
+
+
+        if (!response.ok) {
+
+            throw new Error(
+                data.message ||
+                "Unable to load table."
+            );
+
+        }
+
+
+        currentColumns =
+            data.columns || [];
+
+
+        renderTable(
+            data.rows || []
+        );
+
+    }
+
+    catch(error) {
+
+        console.error(error);
+
+
+        loading.textContent =
+            "❌ " +
+            error.message;
+
+    }
+
+}
+
+
+
+/* =====================================================
+   RENDER TABLE
+===================================================== */
+
+function renderTable(rows) {
+
+    const loading =
+        document.getElementById(
+            "loading"
+        );
+
+
+    const table =
+        document.getElementById(
+            "dataTable"
+        );
+
+
+    const head =
+        document.getElementById(
+            "tableHead"
+        );
+
+
+    const body =
+        document.getElementById(
+            "tableBody"
+        );
+
+
+    const empty =
+        document.getElementById(
+            "empty"
+        );
+
+
+    loading.style.display =
+        "none";
+
+
+    head.innerHTML = "";
+
+    body.innerHTML = "";
+
+
+    if (
+        !rows ||
+        rows.length === 0
+    ) {
+
+        table.style.display =
+            "none";
+
+        empty.style.display =
+            "block";
+
+        return;
+
+    }
+
+
+    table.style.display =
+        "table";
+
+
+    empty.style.display =
+        "none";
+
+
+    /* HEADER */
+
+    let headerHTML =
+        "<tr>";
+
+
+    currentColumns.forEach(
+        column => {
+
+            headerHTML +=
+                `<th>${escapeHTML(column)}</th>`;
+
+        }
+    );
+
+
+    headerHTML +=
+        "<th>Action</th>";
+
+
+    headerHTML +=
+        "</tr>";
+
+
+    head.innerHTML =
+        headerHTML;
+
+
+
+    /* BODY */
+
+    rows.forEach(
+        row => {
+
+            let html =
+                "<tr>";
+
+
+            currentColumns.forEach(
+                column => {
+
+                    let value =
+                        row[column];
+
+
+                    if (
+                        value === null ||
+                        value === undefined
+                    ) {
+
+                        value = "";
+
+                    }
+
+
+                    html +=
+                        `<td>${escapeHTML(String(value))}</td>`;
+
+                }
+            );
+
+
+            html += `
+
+                <td>
+
+                    <div class="action-cell">
+
+                        <button
+                            class="edit-btn"
+                            onclick='editRecord(${JSON.stringify(row)})'
+                            title="Edit this record"
+                        >
+                            ✏️ Edit
+                        </button>
+
+                        <button
+                            class="delete-btn"
+                            onclick="deleteRecord('${row.id}')"
+                            title="Delete this record"
+                        >
+                            🗑️ Delete
+                        </button>
+
+                    </div>
+
+                </td>
+
+            `;
+
+
+            html +=
+                "</tr>";
+
+
+            body.innerHTML +=
+                html;
+
+        }
+    );
+
+}
+
+
+
+/* =====================================================
+   ADD MODAL
+===================================================== */
+
+function openAddModal() {
+
+    editingId = null;
+
+
+    document.getElementById(
+        "modalTitle"
+    ).textContent =
+        "Add New Record";
+
+
+    createFormFields({});
+
+
+    document.getElementById(
+        "recordModal"
+    ).classList.add(
+        "active"
+    );
+
+}
+
+
+
+/* =====================================================
+   EDIT MODAL
+===================================================== */
+
+function editRecord(row) {
+
+    editingId =
+        row.id;
+
+
+    document.getElementById(
+        "modalTitle"
+    ).textContent =
+        "Update Record";
+
+
+    createFormFields(
+        row
+    );
+
+
+    document.getElementById(
+        "recordModal"
+    ).classList.add(
+        "active"
+    );
+
+}
+
+
+
+/* =====================================================
+   CREATE FORM
+===================================================== */
+
+function createFormFields(row) {
+
+    const container =
+        document.getElementById(
+            "formFields"
+        );
+
+
+    container.innerHTML = "";
+
+
+    currentColumns.forEach(
+        column => {
+
+            /* ID is automatically generated */
+
+            if (
+                column.toLowerCase() ===
+                "id"
+            ) {
+
+                return;
+
+            }
+
+
+            const value =
+                row[column] ??
+                "";
+
+
+            const group =
+                document.createElement(
+                    "div"
+                );
+
+
+            group.className =
+                "form-group";
+
+
+            const label =
+                document.createElement(
+                    "label"
+                );
+
+
+            label.textContent =
+                formatColumnName(
+                    column
+                );
+
+
+            const input =
+                document.createElement(
+                    "input"
+                );
+
+
+            input.name =
+                column;
+
+
+            input.value =
+                value;
+
+
+            input.placeholder =
+                "Enter " +
+                formatColumnName(
+                    column
+                );
+
+
+            group.appendChild(
+                label
+            );
+
+
+            group.appendChild(
+                input
+            );
+
+
+            container.appendChild(
+                group
+            );
+
+        }
+    );
+
+}
+
+
+
+/* =====================================================
+   SAVE
+===================================================== */
+
+document
+    .getElementById(
+        "recordForm"
+    )
+    .addEventListener(
+        "submit",
+        async function(event) {
+
+            event.preventDefault();
+
+
+            const formData =
+                new FormData(
+                    this
+                );
+
+
+            const record = {};
+
+
+            formData.forEach(
+                (value, key) => {
+
+                    record[key] =
+                        value;
+
+                }
+            );
+
+
+            try {
+
+                let response;
+
+
+                if (
+                    editingId !== null &&
+                    editingId !== undefined
+                ) {
+
+                    response =
+                        await fetch(
+                            `/api/admin/table/${currentTable}/${editingId}`,
+                            {
+
+                                method:
+                                    "PUT",
+
+                                headers: {
+
+                                    "Content-Type":
+                                        "application/json"
+
+                                },
+
+                                body:
+                                    JSON.stringify(
+                                        record
+                                    )
+
+                            }
+                        );
+
+                }
+
+                else {
+
+                    response =
+                        await fetch(
+                            `/api/admin/table/${currentTable}`,
+                            {
+
+                                method:
+                                    "POST",
+
+                                headers: {
+
+                                    "Content-Type":
+                                        "application/json"
+
+                                },
+
+                                body:
+                                    JSON.stringify(
+                                        record
+                                    )
+
+                            }
+                        );
+
+                }
+
+
+                const data =
+                    await response.json();
+
+
+                if (!response.ok) {
+
+                    throw new Error(
+                        data.message ||
+                        "Save failed."
+                    );
+
+                }
+
+
+                alert(
+                    data.message ||
+                    "Record saved successfully."
+                );
+
+
+                closeModal();
+
+                loadTable();
+
+                loadDashboardStats();
+
+            }
+
+            catch(error) {
+
+                alert(
+                    "❌ " +
+                    error.message
+                );
+
+            }
+
+        }
+    );
+
+
+
+/* =====================================================
+   CLOSE MODAL
+===================================================== */
+
+function closeModal() {
+
+    document.getElementById(
+        "recordModal"
+    ).classList.remove(
+        "active"
+    );
+
+}
+
+
+
+/* =====================================================
+   DELETE RECORD
+===================================================== */
+
+async function deleteRecord(id) {
+
+    if (!id || id === "undefined") {
+        alert("Cannot delete record without a valid ID.");
+        return;
+    }
+
+    if (!confirm(`Are you sure you want to permanently delete record #${id} from ${currentTable}?`)) {
+        return;
+    }
+
+    try {
+
+        const response = await fetch(`/api/admin/table/${currentTable}/${id}`, {
+            method: "DELETE"
+        });
+
+        const data = await response.json();
+
+        if (!response.ok || !data.success) {
+            throw new Error(data.message || "Failed to delete record.");
+        }
+
+        alert(data.message || "Record deleted successfully.");
+
+        loadTable();
+
+        loadDashboardStats();
+
+    } catch (error) {
+
+        console.error("Delete error:", error);
+
+        alert("❌ " + error.message);
+
+    }
+
+}
+
+
+
+/* =====================================================
+   LOGOUT
+===================================================== */
+
+function logout() {
+
+    sessionStorage.removeItem(
+        "adminLoggedIn"
+    );
+
+    sessionStorage.removeItem(
+        "adminUsername"
+    );
+
+    sessionStorage.removeItem(
+        "adminRole"
+    );
+
+
+    window.location.href =
+        "/admin-login";
+
+}
+
+
+
+/* =====================================================
+   FORMAT COLUMN
+===================================================== */
+
+function formatColumnName(
+    name
+) {
+
+    return name
+
+        .replace(
+            /_/g,
+            " "
+        )
+
+        .replace(
+            /\b\w/g,
+            char =>
+                char.toUpperCase()
+        );
+
+}
+
+
+
+/* =====================================================
+   ESCAPE HTML
+===================================================== */
+
+function escapeHTML(
+    value
+) {
+
+    return value
+
+        .replace(
+            /&/g,
+            "&amp;"
+        )
+
+        .replace(
+            /</g,
+            "&lt;"
+        )
+
+        .replace(
+            />/g,
+            "&gt;"
+        )
+
+        .replace(
+            /"/g,
+            "&quot;"
+        )
+
+        .replace(
+            /'/g,
+            "&#039;"
+        );
+
+}
+
+
+
+/* =====================================================
+   START
+===================================================== */
+
+loadDashboardStats();
+
+loadTable();
+
+// Periodically refresh live database counts every 12 seconds
+setInterval(loadDashboardStats, 12000);
+
+</script>
+
+
+</body>
+
+</html>
